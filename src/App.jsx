@@ -16,12 +16,24 @@ function App() {
   const { isDarkMode } = useContext(GlobalContext)
   return (
 
-    <body
+    // Allt är i classname card för att den ska ärva stil stom kommer med bootstraps tema. Annars ärver inte en div eller container någon stil.
+    // Denna div agerar body
+    // Denna div agerar body
+    // Denna div agerar body
+    //d-block för att ta bort flexen ett cad kommer med naturligt.
+    <div className='card rounded-0 border-0 d-block'
       data-bs-theme={isDarkMode ? "dark" : "light"}
-      style={{ height: "100svh", width: "100vw" }}>
+      style={{
+        height: "100svh", width: "100vw"
+      }}>
+      {/* Vanlig div som wrapper här för att bli av med flexen card kommer i */}
+
 
       <DarkModeBtn />
-    </body>
+
+
+
+    </div >
 
 
   )

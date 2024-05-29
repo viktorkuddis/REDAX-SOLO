@@ -24,7 +24,7 @@ const DarkModeBtn = () => {
 
         <button className='btn btn-primary'
             onClick={handleDarkmode}>
-            <i class="bi bi-circle-half"></i>
+            <i className="bi bi-circle-half"></i>
         </button>
 
         {/* Testtext: */}
