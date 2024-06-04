@@ -1,3 +1,4 @@
+
 import axios from 'axios'
 
 //Parser för att läsa xmls:
@@ -19,21 +20,15 @@ export function getAllSrChannels() {
     //     .catch((error) => {
     //         console.log(error);
     //     })
-
-
-    /*HÄMTAR DATA FRÅN MIN JSON*/
-    const allSrChannels = axios.get(`src/data/srChannelsInfo.json`)
-        .then(result => {
-            console.log(result)
-            return result.data;
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-
-    return allSrChannels
-
 }
+
+// FINNS EGEN LISTA MED CHANNEL INFO
+// FINNS EGEN LISTA MED CHANNEL INFO
+// FINNS EGEN LISTA MED CHANNEL INFO
+// FINNS EGEN LISTA MED CHANNEL INFO
+// FINNS EGEN LISTA MED CHANNEL INFO
+
+
 
 // denna hämtar nyhetsfeeden baserat på srs kanalID.
 export function getSrNewsFeedByChannelId(channelId, kanalnamn) {
@@ -78,83 +73,4 @@ export function getSrNewsFeedByChannelId(channelId, kanalnamn) {
     return nyheter
 }
 
-
-// Detta hämtar och sammanställer en array med alla Sveriges Radios Nyhetsartiklar.
-
-export async function getAllSrNewsArticles() {
-    let allNewsFomSR = [];
-
-    //hämtar alla kanaler...
-    try {
-        const allChannels = await getAllSrChannels();
-        // för varje kanal, hämta dess nyhetsfeed...
-        allChannels.forEach(channel => {
-
-            // console.log(channel.channelId )
-            // console.log(channel.channelId, channel.name)
-            getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
-                then((svar) => {
-
-                    // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
-                    if (svar.length > 0) {
-                        // console.log(svar)
-                        svar.forEach((newsitem) => {
-                            const mergesNewsIem = { ...newsitem, ...channel };
-                            // console.log(mergesNewsIem)
-                            allNewsFomSR.push(mergesNewsIem);
-                        });
-
-                    }
-
-                }).catch((err) => { });
-        });
-        return allNewsFomSR;
-    } catch (err_1) {
-        console.log(err_1);
-    }
-
-
-}
-
-
-// export function getAllSrNewsArticles() {
-//     let allNewsFomSR = [];
-
-//     //hämtar alla kanaler...
-//     return getAllSrChannels()
-//         .then((allChannels) => {
-
-//             // för varje kanal, hämta dess nyhetsfeed...
-//             allChannels.forEach(channel => {
-
-//                 // console.log(channel.channelId )
-//                 // console.log(channel.channelId, channel.name)
-
-//                 getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
-//                     then((svar) => {
-
-//                         // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
-//                         if (svar.length > 0) {
-//                             // console.log(svar)
-//                             svar.forEach((newsitem) => {
-//                                 const mergesNewsIem = { ...newsitem, ...channel }
-//                                 // console.log(mergesNewsIem)
-
-//                                 allNewsFomSR.push(mergesNewsIem)
-//                             })
-
-//                         }
-
-//                         // console.log(allNewsFomSR)
-
-//                     }).catch((err) => { })
-//             });
-
-//         }).then(() => {
-//             // Returnera arrayen allNewsFomSR
-//             return allNewsFomSR;
-//         }).catch((err) => { console.log(err) })
-
-
-// }
 

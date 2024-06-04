@@ -1,4 +1,4 @@
-[
+const srChannelInfo = [
     {
         "channelName": "P1",
         "channelId": 3632,
@@ -234,16 +234,16 @@
         "channelId": 4842,
         "coverage": "nationell"
     },
-    {
-        "channelName": "SR Extra14",
-        "channelId": 4866,
-        "coverage": "nationell"
-    },
-    {
-        "channelName": "SR Extra15",
-        "channelId": 4868,
-        "coverage": "nationell"
-    },
+    // {
+    //     "channelName": "SR Extra14",
+    //     "channelId": 4866,
+    //     "coverage": "nationell"
+    // },
+    // {
+    //     "channelName": "SR Extra15",
+    //     "channelId": 4868,
+    //     "coverage": "nationell"
+    // },
     {
         "channelName": "Ekot sänder direkt",
         "channelId": 5381,
@@ -259,4 +259,6 @@
         "channelId": 5283,
         "coverage": "lokal"
     }
-]
+];
+
+export default srChannelInfo;
