@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import GlobalContext from '../../context/GlobalContext';
 
 
-
+import NewsCard from './NewsCard';
 
 
 
@@ -12,66 +12,22 @@ const TryThings = () => {
 
     const { allSrNews, getAllSrNewsArticles } = useContext(GlobalContext)
 
+    // detta objektet kan vi leka med för att se hur de serut på sidan:
+    allSrNews[2].subSource = ""
+    console.log(allSrNews[2])
+
+
+
     // kallar på funktoin som kämtar data från apiet.
     useEffect(() => { getAllSrNewsArticles() }, [])
 
-    return (
-        <div >
-
-            <>
-                <h2>Senaste Nytt:</h2>
-                <ul>
-                    {allSrNews.map((item) => (
-                        <li key={item.id}>{item.title}</li>
-                    ))}
-                </ul>
-            </>
-
-        </div>
+    return (<>
+        <h2>Senaste Nytt:</h2>
+        {allSrNews.map((article) => (
+            <NewsCard key={article.id + article.link} article={article} />
+        ))}
+    </>
     );
-
-
-
-
-
-
-
-
-
-    //     const [artiklar, setArtiklar] = useState([])
-
-
-    //     useEffect(() => {
-
-    //         getAllSrNewsArticles()
-    //             .then((svar) => {
-    //                 console.log("detta är arraien:", svar)
-    //                 setArtiklar(svar)
-
-    //             })
-
-
-    //     }, [])
-
-    //     useEffect(() => {
-
-    //         console.log(artiklar, "den i useeffekten")
-
-
-    //     }, [artiklar])
-
-
-
-    //     return (
-    //         <div>
-    //             {artiklar && "ye"}
-    //             <br />
-    //             {artiklar.length > 0 && artiklar.summary}
-    //             {/* {artiklar[0].id} */}
-
-    //         </div>
-    //     )
-    //
 }
 
 export default TryThings

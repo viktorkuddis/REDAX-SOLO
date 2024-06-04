@@ -37,6 +37,27 @@ export function GlobalContextProvider({ children }) {
         }]);
 
     /* ********************************************************* */
+
+    // funktion som returnerar ett objekt enligt den mall som behövs.
+    function formatGlobalNewsObject(title, mainSource, subSource, coverage, image, media, summary, content, published, updated, link) {
+        const formattedObject = {
+            title: title || "",
+            mainSource: mainSource || "",
+            subSource: subSource || "",
+            coverage: coverage || "",
+            image: image || "",
+            media: media || "",
+            summary: summary || "",
+            content: content || "",
+            published: published || "",
+            updated: updated || "",
+            link: link || "",
+        };
+        return formattedObject;
+
+
+    }
+
     function getAllSrNewsArticles() {
         let completedArray = [];
 
@@ -51,9 +72,25 @@ export function GlobalContextProvider({ children }) {
                         if (svar.length > 0) {
                             // console.log(svar)
                             svar.forEach((newsitem) => {
-                                const mergesNewsIem = { ...newsitem, ...channel }
+                                const mergedObjekt = { ...newsitem, ...channel }
                                 // console.log(mergesNewsIem)
-                                completedArray.push(mergesNewsIem)
+
+                                const formatedObject = formatGlobalNewsObject(
+                                    mergedObjekt.title,
+                                    "Sveriges Radio",
+                                    mergedObjekt.channelName,
+                                    mergedObjekt.coverage,
+                                    mergedObjekt.image,
+                                    mergedObjekt.media,
+                                    mergedObjekt.summary,
+                                    mergedObjekt.content,
+                                    mergedObjekt.published,
+                                    mergedObjekt.updated,
+                                    mergedObjekt.link)
+
+
+
+                                completedArray.push(formatedObject)
                             })
                         }
                         // console.log(completedArray)
