@@ -1,4 +1,4 @@
-[
+const srChannelInfo = [
     {
         "channelName": "P1",
         "channelId": 3632,
@@ -259,4 +259,6 @@
         "channelId": 5283,
         "coverage": "lokal"
     }
-]
+];
+
+export default srChannelInfo;

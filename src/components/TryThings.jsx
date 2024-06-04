@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
+import srChannelInfo from './utils/srChannelsInfo';
 import { getAllSrChannels, getSrNewsFeedByChannelId, getAllSrNewsArticles } from './utils/getFromSR';
 
 
@@ -20,55 +21,64 @@ const TryThings = () => {
 
     const [data, setData] = useState([]);
 
+
     useEffect(() => {
 
-        async function getAllSrNewsArticles() {
+
+        function getAllSrNewsArticles() {
             let allNewsFomSR = [];
 
-            //hämtar alla kanaler...
-            try {
-                const allChannels = await getAllSrChannels();
-                // för varje kanal, hämta dess nyhetsfeed...
-                allChannels.forEach(channel => {
+            srChannelInfo.forEach(channel => {
 
-                    // console.log(channel.channelId )
-                    // console.log(channel.channelId, channel.name)
-                    getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
-                        then((svar) => {
+                // console.log(channel.channelId)
+                console.log(channel.channelId, channel.channelName)
 
-                            // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
-                            if (svar.length > 0) {
-                                // console.log(svar)
-                                svar.forEach((newsitem) => {
-                                    const mergesNewsIem = { ...newsitem, ...channel };
-                                    // console.log(mergesNewsIem)
-                                    allNewsFomSR.push(mergesNewsIem);
-                                });
+                getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
+                    then((svar) => {
 
-                            }
+                        // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
+                        if (svar.length > 0) {
+                            // console.log(svar)
+                            svar.forEach((newsitem) => {
+                                const mergesNewsIem = { ...newsitem, ...channel }
+                                // console.log(mergesNewsIem)
 
-                        }).catch((err) => { });
-                });
-                setData(allNewsFomSR)
-                // return allNewsFomSR;
-            } catch (err_1) {
-                console.log(err_1);
-            }
+                                allNewsFomSR.push(mergesNewsIem)
+                            })
 
-            // setData(allNewsFomSR)
+                        }
+
+                        // console.log(allNewsFomSR)
+
+                    })
+                    .then((__) => { setData(allNewsFomSR) }).catch((err) => { })
+            })
+            // .then(() => {
+            //     // Returnera arrayen allNewsFomSR
+            //     return allNewsFomSR;
+            // }).catch((err) => { console.log(err) })
+
+
         }
 
-        getAllSrNewsArticles();
-    }, []);
+        getAllSrNewsArticles()
+
+    }, [])
+
 
     return (
         <div>
             {data.length > 0 ? (
                 <ul>
                     {data.map((item) => (
-                        <li key={item.id}>{item.title}</li>
+                        <>
+                            <li key={item.id}>{item.title}</li>
+
+                        </>
+
                     ))}
                 </ul>
+
             ) : (
                 <p>Laddar...</p>
             )}
