@@ -25,7 +25,7 @@ function App() {
     <div className='card rounded-0 border-0 d-block'
       data-bs-theme={isDarkMode ? "dark" : "light"}
       style={{
-        height: "100svh", width: "100vw"
+        height: "100svh", width: "100vw", overflow: "auto"
       }}>
       {/* Vanlig div som wrapper här för att bli av med flexen card kommer i */}
 

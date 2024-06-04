@@ -1,5 +1,65 @@
+import React from 'react'
+
+
 import axios from 'axios'
 import srChannelInfo from './srChannelsInfo'
+import { useContext } from 'react'
+
+import GlobalContext from '../../../context/GlobalContext'
+
+
+
+const getFromSR = () => {
+
+    const { allSrNews, setAllSrNews } = useContext(GlobalContext)
+
+
+    function getAllSrNewsArticles() {
+        let allNewsFomSR = [];
+
+        srChannelInfo.forEach(channel => {
+
+            // console.log(channel.channelId)
+            console.log(channel.channelId, channel.channelName)
+
+            getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
+                then((svar) => {
+
+                    // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
+                    if (svar.length > 0) {
+                        // console.log(svar)
+                        svar.forEach((newsitem) => {
+                            const mergesNewsIem = { ...newsitem, ...channel }
+                            // console.log(mergesNewsIem)
+
+                            allNewsFomSR.push(mergesNewsIem)
+                        })
+
+                    }
+
+                    // console.log(allNewsFomSR)
+
+                })
+                .then((__) => { setData(allNewsFomSR) }).catch((err) => { })
+        })
+        // .then(() => {
+        //     // Returnera arrayen allNewsFomSR
+        //     return allNewsFomSR;
+        // }).catch((err) => { console.log(err) })
+
+
+    }
+
+    getAllSrNewsArticles()
+    return;
+}
+
+
+export default getFromSR
+
+
+
+
 //Parser för att läsa xmls:
 const parser = new DOMParser()
 
@@ -71,37 +131,42 @@ export function getSrNewsFeedByChannelId(channelId, kanalnamn) {
 
 
 
-export function getAllSrNewsArticles() {
-    let allNewsFomSR = [];
-
-    srChannelInfo.forEach(channel => {
-
-        // console.log(channel.channelId )
-        // console.log(channel.channelId, channel.name)
-
-        getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
-            then((svar) => {
-
-                // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
-                if (svar.length > 0) {
-                    // console.log(svar)
-                    svar.forEach((newsitem) => {
-                        const mergesNewsIem = { ...newsitem, ...channel }
-                        // console.log(mergesNewsIem)
-
-                        allNewsFomSR.push(mergesNewsIem)
-                    })
-
-                }
-
-                // console.log(allNewsFomSR)
-
-            }).catch((err) => { })
-    }).then(() => {
-        // Returnera arrayen allNewsFomSR
-        return allNewsFomSR;
-    }).catch((err) => { console.log(err) })
 
 
-}
+
+
+
+// export function getAllSrNewsArticles() {
+//     let allNewsFomSR = [];
+
+//     srChannelInfo.forEach(channel => {
+
+//         // console.log(channel.channelId )
+//         // console.log(channel.channelId, channel.name)
+
+//         getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
+//             then((svar) => {
+
+//                 // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
+//                 if (svar.length > 0) {
+//                     // console.log(svar)
+//                     svar.forEach((newsitem) => {
+//                         const mergesNewsIem = { ...newsitem, ...channel }
+//                         // console.log(mergesNewsIem)
+
+//                         allNewsFomSR.push(mergesNewsIem)
+//                     })
+
+//                 }
+
+//                 // console.log(allNewsFomSR)
+
+//             }).catch((err) => { })
+//     }).then(() => {
+//         // Returnera arrayen allNewsFomSR
+//         return allNewsFomSR;
+//     }).catch((err) => { console.log(err) })
+
+
+// }
 
