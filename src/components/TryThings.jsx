@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
 import srChannelInfo from './utils/srChannelsInfo';
-import { getAllSrChannels, getSrNewsFeedByChannelId, getAllSrNewsArticles } from './utils/getFromSR';
-
-
+import { getAllSrChannels, getSrNewsFeedByChannelId } from './utils/getFromSR';
+import { useContext } from 'react';
+import GlobalContext from '../../context/GlobalContext';
 
 
 
@@ -13,9 +13,9 @@ import { getAllSrChannels, getSrNewsFeedByChannelId, getAllSrNewsArticles } from
 
 const TryThings = () => {
 
+    const { allSrNews, setAllSrNews, getAllSrNewsArticles } = useContext(GlobalContext)
 
-
-
+    useEffect(() => { getAllSrNewsArticles() }, [])
 
 
 
@@ -25,59 +25,58 @@ const TryThings = () => {
     useEffect(() => {
 
 
-        function getAllSrNewsArticles() {
-            let allNewsFomSR = [];
+        // function getAllSrNewsArticles() {
+        //     let allNewsFomSR = [];
 
-            srChannelInfo.forEach(channel => {
+        //     srChannelInfo.forEach(channel => {
 
-                // console.log(channel.channelId)
-                console.log(channel.channelId, channel.channelName)
+        //         // console.log(channel.channelId)
+        //         console.log(channel.channelId, channel.channelName)
 
-                getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
-                    then((svar) => {
+        //         getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
+        //             then((svar) => {
 
-                        // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
-                        if (svar.length > 0) {
-                            // console.log(svar)
-                            svar.forEach((newsitem) => {
-                                const mergesNewsIem = { ...newsitem, ...channel }
-                                // console.log(mergesNewsIem)
+        //                 // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
+        //                 if (svar.length > 0) {
+        //                     // console.log(svar)
+        //                     svar.forEach((newsitem) => {
+        //                         const mergesNewsIem = { ...newsitem, ...channel }
+        //                         // console.log(mergesNewsIem)
 
-                                allNewsFomSR.push(mergesNewsIem)
-                            })
+        //                         allNewsFomSR.push(mergesNewsIem)
+        //                     })
 
-                        }
+        //                 }
 
-                        // console.log(allNewsFomSR)
+        //                 // console.log(allNewsFomSR)
 
-                    })
-                    .then((__) => { setData(allNewsFomSR) }).catch((err) => { })
-            })
-            // .then(() => {
-            //     // Returnera arrayen allNewsFomSR
-            //     return allNewsFomSR;
-            // }).catch((err) => { console.log(err) })
+        //             })
+        //             .then((__) => { setData(allNewsFomSR) }).catch((err) => { })
+        //     })
+        //     // .then(() => {
+        //     //     // Returnera arrayen allNewsFomSR
+        //     //     return allNewsFomSR;
+        //     // }).catch((err) => { console.log(err) })
 
 
-        }
+        // }
 
-        getAllSrNewsArticles()
+        // getAllSrNewsArticles()
 
     }, [])
 
 
     return (
-        <div>
-            {data.length > 0 ? (
-                <ul>
-                    {data.map((item) => (
-                        <>
+        <div >
+            {allSrNews.length > 0 ? (
+                <>
+                    <h2>Senaste Nytt:</h2>
+                    <ul>
+                        {allSrNews.map((item) => (
                             <li key={item.id}>{item.title}</li>
-
-                        </>
-
-                    ))}
-                </ul>
+                        ))}
+                    </ul>
+                </>
 
             ) : (
                 <p>Laddar...</p>
