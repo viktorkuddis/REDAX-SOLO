@@ -9,53 +9,53 @@ import GlobalContext from '../../../context/GlobalContext'
 
 
 
-const getFromSR = () => {
+// const getFromSR = () => {
 
-    const { allSrNews, setAllSrNews } = useContext(GlobalContext)
-
-
-    function getAllSrNewsArticles() {
-        let allNewsFomSR = [];
-
-        srChannelInfo.forEach(channel => {
-
-            // console.log(channel.channelId)
-            console.log(channel.channelId, channel.channelName)
-
-            getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
-                then((svar) => {
-
-                    // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
-                    if (svar.length > 0) {
-                        // console.log(svar)
-                        svar.forEach((newsitem) => {
-                            const mergesNewsIem = { ...newsitem, ...channel }
-                            // console.log(mergesNewsIem)
-
-                            allNewsFomSR.push(mergesNewsIem)
-                        })
-
-                    }
-
-                    // console.log(allNewsFomSR)
-
-                })
-                .then((__) => { setData(allNewsFomSR) }).catch((err) => { })
-        })
-        // .then(() => {
-        //     // Returnera arrayen allNewsFomSR
-        //     return allNewsFomSR;
-        // }).catch((err) => { console.log(err) })
+//     const { allSrNews, setAllSrNews } = useContext(GlobalContext)
 
 
-    }
+// function getAllSrNewsArticles() {
+//     let allNewsFomSR = [];
 
-    getAllSrNewsArticles()
-    return;
-}
+//     srChannelInfo.forEach(channel => {
+
+//         // console.log(channel.channelId)
+//         console.log(channel.channelId, channel.channelName)
+
+//         getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
+//             then((svar) => {
+
+//                 // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
+//                 if (svar.length > 0) {
+//                     // console.log(svar)
+//                     svar.forEach((newsitem) => {
+//                         const mergesNewsIem = { ...newsitem, ...channel }
+//                         // console.log(mergesNewsIem)
+
+//                         allNewsFomSR.push(mergesNewsIem)
+//                     })
+
+//                 }
+
+//                 // console.log(allNewsFomSR)
+
+//             })
+//             .then((__) => { setData(allNewsFomSR) }).catch((err) => { })
+//     })
+//     // .then(() => {
+//     //     // Returnera arrayen allNewsFomSR
+//     //     return allNewsFomSR;
+//     // }).catch((err) => { console.log(err) })
 
 
-export default getFromSR
+//     }
+
+//     getAllSrNewsArticles()
+//     return;
+// }
+
+
+// export default getFromSR
 
 
 
