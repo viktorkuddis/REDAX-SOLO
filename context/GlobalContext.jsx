@@ -46,18 +46,22 @@ export function GlobalContextProvider({ children }) {
             getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
                 then((svar) => {
                     // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
-                    if (svar.length > 0) {
-                        // console.log(svar)
-                        svar.forEach((newsitem) => {
-                            const mergesNewsIem = { ...newsitem, ...channel }
-                            // console.log(mergesNewsIem)
-                            completedArray.push(mergesNewsIem)
-                        })
+                    // console.log(svar)
+                    if (svar) {
+                        if (svar.length > 0) {
+                            // console.log(svar)
+                            svar.forEach((newsitem) => {
+                                const mergesNewsIem = { ...newsitem, ...channel }
+                                // console.log(mergesNewsIem)
+                                completedArray.push(mergesNewsIem)
+                            })
+                        }
+                        // console.log(completedArray)
                     }
-                    // console.log(completedArray)
+
 
                 })
-                .then((__) => { setAllSrNews(completedArray) }).catch((err) => { })
+                .then((__) => { setAllSrNews(completedArray) }).catch((err) => { console.log(err) })
         })
     }
     /* ********************************************************* */

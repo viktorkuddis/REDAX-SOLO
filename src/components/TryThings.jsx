@@ -68,19 +68,16 @@ const TryThings = () => {
 
     return (
         <div >
-            {allSrNews.length > 0 ? (
-                <>
-                    <h2>Senaste Nytt:</h2>
-                    <ul>
-                        {allSrNews.map((item) => (
-                            <li key={item.id}>{item.title}</li>
-                        ))}
-                    </ul>
-                </>
 
-            ) : (
-                <p>Laddar...</p>
-            )}
+            <>
+                <h2>Senaste Nytt:</h2>
+                <ul>
+                    {allSrNews.map((item) => (
+                        <li key={item.id}>{item.title}</li>
+                    ))}
+                </ul>
+            </>
+
         </div>
     );
 
