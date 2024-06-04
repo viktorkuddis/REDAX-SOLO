@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from 'react'
-
-import srChannelInfo from './utils/srChannelsInfo';
-import { getAllSrChannels, getSrNewsFeedByChannelId } from './utils/getFromSR';
+import React, { useEffect } from 'react'
 import { useContext } from 'react';
 import GlobalContext from '../../context/GlobalContext';
 
@@ -13,58 +10,10 @@ import GlobalContext from '../../context/GlobalContext';
 
 const TryThings = () => {
 
-    const { allSrNews, setAllSrNews, getAllSrNewsArticles } = useContext(GlobalContext)
+    const { allSrNews, getAllSrNewsArticles } = useContext(GlobalContext)
 
+    // kallar på funktoin som kämtar data från apiet.
     useEffect(() => { getAllSrNewsArticles() }, [])
-
-
-
-    const [data, setData] = useState([]);
-
-
-    useEffect(() => {
-
-
-        // function getAllSrNewsArticles() {
-        //     let allNewsFomSR = [];
-
-        //     srChannelInfo.forEach(channel => {
-
-        //         // console.log(channel.channelId)
-        //         console.log(channel.channelId, channel.channelName)
-
-        //         getSrNewsFeedByChannelId(channel.channelId, channel.channelName).
-        //             then((svar) => {
-
-        //                 // om svaret är en array med innehåll så skickas varje nyhet in i samlings-arrayen med alla nyheter.:
-        //                 if (svar.length > 0) {
-        //                     // console.log(svar)
-        //                     svar.forEach((newsitem) => {
-        //                         const mergesNewsIem = { ...newsitem, ...channel }
-        //                         // console.log(mergesNewsIem)
-
-        //                         allNewsFomSR.push(mergesNewsIem)
-        //                     })
-
-        //                 }
-
-        //                 // console.log(allNewsFomSR)
-
-        //             })
-        //             .then((__) => { setData(allNewsFomSR) }).catch((err) => { })
-        //     })
-        //     // .then(() => {
-        //     //     // Returnera arrayen allNewsFomSR
-        //     //     return allNewsFomSR;
-        //     // }).catch((err) => { console.log(err) })
-
-
-        // }
-
-        // getAllSrNewsArticles()
-
-    }, [])
-
 
     return (
         <div >
