@@ -6,7 +6,9 @@ const NewsCard = () => {
 
     //skapa lite dummy hårdkodat
     const { allSrNews, getAllSrNewsArticles } = useContext(GlobalContext)
-    let article = allSrNews[2];
+    let article = allSrNews[1];
+
+    console.log(article)
 
 
 
@@ -19,6 +21,7 @@ const NewsCard = () => {
             <p className="mb-1"><small> <small>{article.published}</small></small></p>
             <p className="m-0"><small>{article.summary}</small></p>
 
+            <iframe title="Inbäddat innehåll från Sveriges Radio" width="100%" src="https://sverigesradio.se/embed/publication/8388534"></iframe>
 
         </div>
     )

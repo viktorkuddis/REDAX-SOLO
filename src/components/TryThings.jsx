@@ -22,15 +22,7 @@ const TryThings = () => {
         < NewsCard />
         < NewsCard />
         <div >
-
-
             <h2>Senaste Nytt:</h2>
-            <ul>
-                {allSrNews.map((item) => (
-                    <li key={item.id}>{item.title}</li>
-                ))}
-            </ul>
-
 
         </div>
     </>

@@ -1,5 +1,6 @@
 
 import axios from 'axios'
+import { hittaForstaBildsokvag, taBortHtmlTaggar } from './stringManipulationsUtils'
 
 //Parser för att läsa xmls:
 const parser = new DOMParser()
@@ -28,6 +29,14 @@ export function getAllSrChannels() {
 // FINNS EGEN LISTA MED CHANNEL INFO
 // FINNS EGEN LISTA MED CHANNEL INFO
 
+//Funktion som returnerar Sverige Radios Mediapsleare baserat på artikelns länk:
+function getSrMediaPlayer(linkToArtikle) {
+
+    let publicationID = linkToArtikle.split("/");
+    publicationID = publicationID[publicationID.length - 1];
+
+    return `<iframe title="Inbäddat innehåll från Sveriges Radio" width="100%" src="https://sverigesradio.se/embed/publication/${publicationID}"></iframe>`
+}
 
 
 // denna hämtar nyhetsfeeden baserat på srs kanalID.
@@ -48,10 +57,19 @@ export function getSrNewsFeedByChannelId(channelId, kanalnamn) {
             // Konvertera NodeListen till en array och mappa upp de olika taggarna som key.
             // Varje nyhetr är nu ett samlat objekt i arrayen
             const items = Array.from(XMLDATA).map((item) => {
+
+                const imgSrc = hittaForstaBildsokvag(item.getElementsByTagName("content")[0].textContent)
+
+                const mediapPlayer = getSrMediaPlayer(item.getElementsByTagName("link")[0].getAttribute("href"))
+
+                const cleanSummary = taBortHtmlTaggar(item.getElementsByTagName("summary")[0].textContent)
+
                 return {
                     id: item.getElementsByTagName("id")[0].textContent,
                     title: item.getElementsByTagName("title")[0].textContent,
-                    summary: item.getElementsByTagName("summary")[0].textContent,
+                    image: imgSrc,
+                    media: mediapPlayer,
+                    summary: cleanSummary,
                     published: item.getElementsByTagName("published")[0].textContent,
                     updated: item.getElementsByTagName("updated")[0].textContent,
                     author: item.getElementsByTagName("author")[0].textContent,
