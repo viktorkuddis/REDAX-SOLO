@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import GlobalContext from '../context/GlobalContext';
 import DarkModeBtn from './components/DarkModeBtn';
+import TryThings from './components/TryThings';
 
 function App() {
 
@@ -29,7 +30,10 @@ function App() {
       {/* Vanlig div som wrapper här för att bli av med flexen card kommer i */}
 
 
+      {/* <iframe title="Inbäddat innehåll från Sveriges Radio" width="100%" src="https://sverigesradio.se/embed/publication/8678893" frameborder="0"></iframe> */}
+
       <DarkModeBtn />
+      <TryThings />
 
 
 
