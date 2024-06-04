@@ -7,7 +7,7 @@ const parser = new DOMParser()
 // här hämtar vi info om varje srkanal som finns
 export function getAllSrChannels() {
 
-    /*DETTA ÄR FRÅN DERAS EGNA LISTA*/
+    /*DETTA ÄR FRÅN DERAS EGNA LISTA */
     /*DETTA ÄR FRÅN DERAS EGNA LISTA*/
     /*DETTA ÄR FRÅN DERAS EGNA LISTA*/
     // const allSrChannels = axios.get(`https://api.sr.se/api/v2/channels?format=json&pagination=false`)
