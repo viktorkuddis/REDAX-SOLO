@@ -41,19 +41,21 @@ export function GlobalContextProvider({ children }) {
     // funktion som returnerar ett objekt enligt den mall som behövs.
     function formatGlobalNewsObject(title, mainSource, subSource, coverage, image, media, summary, content, published, updated, link) {
         const formattedObject = {
-            title,
-            mainSource,
-            subSource,
-            coverage,
-            image,
-            media,
-            summary,
-            content,
-            published,
-            updated,
-            link,
-        }
-        return formattedObject
+            title: title || "",
+            mainSource: mainSource || "",
+            subSource: subSource || "",
+            coverage: coverage || "",
+            image: image || "",
+            media: media || "",
+            summary: summary || "",
+            content: content || "",
+            published: published || "",
+            updated: updated || "",
+            link: link || "",
+        };
+        return formattedObject;
+
+
     }
 
     function getAllSrNewsArticles() {

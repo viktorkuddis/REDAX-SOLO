@@ -13,6 +13,6 @@ export function hittaForstaBildsokvag(htmlStr) {
 // TVÄTTA STRING FRÅN HTMLTAGGAR
 export function taBortHtmlTaggar(htmlStr) {
     // Använd en regex för att ersätta alla HTML-taggar med tomt utrymme
-    return htmlStr.replace(/<[^>]*>/g, '');
+    return htmlStr.replace(/<[^>]*>/g, ' ');
 }
 
