@@ -16,8 +16,6 @@ const DarkModeBtn = () => {
         localStorage.setItem("isDarkMode", JSON.stringify(!isDarkMode))
         //uppdaterar kontext
         setIsDarkMode(!isDarkMode)
-
-
     }
 
     return (<>
