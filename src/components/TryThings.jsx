@@ -26,15 +26,16 @@ const TryThings = () => {
         <div className='container-fluid'>
             <div className='row'>
                 <div className='col-6'>
-                    <div className='card' style={{ maxHeight: "90vh", overflow: "auto" }}>
+
+                    <div className='card' style={{ maxHeight: "90svh", overflow: "auto" }}>
                         <h2>Senaste Nytt:</h2>
                         {allSrNews.map((article) => (
-                            <NewsCard key={article.id + article.link} article={article} />
+                            <NewsCard key={article.id} article={article} />
                         ))}
                     </div>
                 </div>
                 <div className='col-6'>
-                    {/* <MainNewsDisplay articleToDisplay={allSrNews[0]} /> */}
+                    <MainNewsDisplay articleToDisplay={allSrNews[0]} />
                 </div>
             </div>
         </div>

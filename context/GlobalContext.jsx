@@ -43,9 +43,10 @@ export function GlobalContextProvider({ children }) {
     /* ********************************************************* */
 
     // funktion som returnerar ett objekt enligt den mall som behövs.
-    function formatGlobalNewsObject(title, mainSource, subSource, coverage, image, media, summary, content, published, updated, link) {
+    function formatGlobalNewsObject(title, id, mainSource, subSource, coverage, image, media, summary, content, published, updated, link) {
         const formattedObject = {
             title: title || "",
+            id: id || "",
             mainSource: mainSource || "",
             subSource: subSource || "",
             coverage: coverage || "",
@@ -84,6 +85,7 @@ export function GlobalContextProvider({ children }) {
 
                                 const formatedObject = formatGlobalNewsObject(
                                     mergedObjekt.title,
+                                    mergedObjekt.id,
                                     "Sveriges Radio",
                                     mergedObjekt.channelName,
                                     mergedObjekt.coverage,
@@ -127,7 +129,8 @@ export function GlobalContextProvider({ children }) {
         <GlobalContext.Provider value={{
             isDarkMode, setIsDarkMode,
             allSrNews, setAllSrNews,
-            getAllSrNewsArticles
+            getAllSrNewsArticles,
+            activeArticleId, setActiveArticleId
         }}>
 
             {children}
