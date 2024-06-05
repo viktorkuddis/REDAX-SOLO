@@ -33,7 +33,10 @@ function App() {
       {/* <iframe title="Inbäddat innehåll från Sveriges Radio" width="100%" src="https://sverigesradio.se/embed/publication/8678893" frameborder="0"></iframe> */}
 
       <DarkModeBtn />
-      <TryThings />
+      <div className='container'>
+        <TryThings />
+      </div>
+
 
 
 

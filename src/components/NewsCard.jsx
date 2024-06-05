@@ -20,7 +20,7 @@ const NewsCard = ({ article }) => {
 
             <div className="row g-0 gap-1">
 
-                <div className="card border-0 rounded-1 col-md-3 col-2" style={{
+                <div className="card border-0 rounded-1  col-2 col-md-3 col-lg-2" style={{
                     backgroundImage: `url(${article.image})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center"
