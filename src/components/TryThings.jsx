@@ -18,7 +18,7 @@ const TryThings = () => {
 
 
 
-    // kallar på funktoin som kämtar data från apiet.
+    // kallar på funktoin som hämtar data från apiet.
     useEffect(() => { getAllSrNewsArticles() }, [])
 
     return (<>

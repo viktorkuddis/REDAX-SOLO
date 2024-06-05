@@ -98,7 +98,13 @@ export function GlobalContextProvider({ children }) {
 
 
                 })
-                .then((__) => { setAllSrNews(completedArray) }).catch((err) => { console.log(err) })
+                .then((__) => {
+                    completedArray.sort((a, b) => {
+                        return new Date(b.published) - new Date(a.published);
+                    });
+
+                    setAllSrNews(completedArray)
+                }).catch((err) => { console.log(err) })
         })
     }
     /* ********************************************************* */
