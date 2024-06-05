@@ -37,6 +37,10 @@ export function GlobalContextProvider({ children }) {
         }]);
 
     /* ********************************************************* */
+    // Variabel som håller koll på den aktuella artikelns id som ska visas
+    const [activeArticleId, setActiveArticleId] = useState(null);
+
+    /* ********************************************************* */
 
     // funktion som returnerar ett objekt enligt den mall som behövs.
     function formatGlobalNewsObject(title, mainSource, subSource, coverage, image, media, summary, content, published, updated, link) {
@@ -58,6 +62,9 @@ export function GlobalContextProvider({ children }) {
 
     }
 
+    /* ********************************************************* */
+
+    // Denna hämtar allt från sr-apiet och skickar in de i arrayen för Alla sr-nyheter..
     function getAllSrNewsArticles() {
         let completedArray = [];
 

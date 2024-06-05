@@ -1,6 +1,7 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+
 import './App.css'
 /*-----------------------------------------------------*/
 /* BOOTSTRAP STYLE - BOOTSTRAP STYLE - BOOTSTRAP STYLE */
@@ -11,10 +12,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalContext from '../context/GlobalContext';
 import DarkModeBtn from './components/DarkModeBtn';
 import TryThings from './components/TryThings';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
 
+
   const { isDarkMode } = useContext(GlobalContext)
+
+
+
+
+  //loadingScreen:
+  const [isLoading, setIsLoading] = useState(true);
+
+  //loadingScreen timeout:
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    // Rensa timern när komponenten avmonteras
+    return () => clearTimeout(timer);
+  }, []); // Använder en tom beroendelista för att bara köra effekten vid montering
+
+
+
+
   return (
 
     // Allt är i classname card för att den ska ärva stil stom kommer med bootstraps tema. Annars ärver inte en div eller container någon stil.
@@ -30,10 +53,11 @@ function App() {
       {/* Vanlig div som wrapper här för att bli av med flexen card kommer i */}
 
 
-      {/* <iframe title="Inbäddat innehåll från Sveriges Radio" width="100%" src="https://sverigesradio.se/embed/publication/8678893" frameborder="0"></iframe> */}
+      {isLoading && <LoadingScreen />}
 
       <DarkModeBtn />
-      <div className='container'>
+      <div className=''>
+
         <TryThings />
       </div>
 
