@@ -1,6 +1,6 @@
 
 import axios from 'axios'
-import { hittaForstaBildsokvag, taBortHtmlTaggar } from './stringManipulationsUtils'
+import { hittaForstaBildsokvag, taBortHtmlTaggar, addMaxWidthToImages, addTargetBlankToLinks } from './stringManipulationsUtils'
 
 //Parser för att läsa xmls:
 const parser = new DOMParser()
@@ -64,6 +64,12 @@ export function getSrNewsFeedByChannelId(channelId, kanalnamn) {
 
                 const cleanSummary = taBortHtmlTaggar(item.getElementsByTagName("summary")[0].textContent)
 
+                let formattedContent = addMaxWidthToImages(item.getElementsByTagName("content")[0].textContent)
+                formattedContent = addTargetBlankToLinks(formattedContent)
+                    ;
+
+
+
                 return {
                     id: item.getElementsByTagName("id")[0].textContent,
                     title: item.getElementsByTagName("title")[0].textContent,
@@ -75,7 +81,7 @@ export function getSrNewsFeedByChannelId(channelId, kanalnamn) {
                     author: item.getElementsByTagName("author")[0].textContent,
                     link: item.getElementsByTagName("link")[0].getAttribute("href"),
                     category: item.getElementsByTagName("category")[0].textContent,
-                    content: item.getElementsByTagName("content")[0].textContent
+                    content: formattedContent
                 }
 
             })
