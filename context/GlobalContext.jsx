@@ -37,11 +37,16 @@ export function GlobalContextProvider({ children }) {
         }]);
 
     /* ********************************************************* */
+    // Variabel som håller koll på den aktuella artikelns id som ska visas
+    const [activeArticleId, setActiveArticleId] = useState(null);
+
+    /* ********************************************************* */
 
     // funktion som returnerar ett objekt enligt den mall som behövs.
-    function formatGlobalNewsObject(title, mainSource, subSource, coverage, image, media, summary, content, published, updated, link) {
+    function formatGlobalNewsObject(title, id, mainSource, subSource, coverage, image, media, summary, content, published, updated, link) {
         const formattedObject = {
             title: title || "",
+            id: id || "",
             mainSource: mainSource || "",
             subSource: subSource || "",
             coverage: coverage || "",
@@ -58,6 +63,9 @@ export function GlobalContextProvider({ children }) {
 
     }
 
+    /* ********************************************************* */
+
+    // Denna hämtar allt från sr-apiet och skickar in de i arrayen för Alla sr-nyheter..
     function getAllSrNewsArticles() {
         let completedArray = [];
 
@@ -77,6 +85,7 @@ export function GlobalContextProvider({ children }) {
 
                                 const formatedObject = formatGlobalNewsObject(
                                     mergedObjekt.title,
+                                    mergedObjekt.id,
                                     "Sveriges Radio",
                                     mergedObjekt.channelName,
                                     mergedObjekt.coverage,
@@ -98,7 +107,13 @@ export function GlobalContextProvider({ children }) {
 
 
                 })
-                .then((__) => { setAllSrNews(completedArray) }).catch((err) => { console.log(err) })
+                .then((__) => {
+                    completedArray.sort((a, b) => {
+                        return new Date(b.published) - new Date(a.published);
+                    });
+
+                    setAllSrNews(completedArray)
+                }).catch((err) => { console.log(err) })
         })
     }
     /* ********************************************************* */
@@ -114,7 +129,8 @@ export function GlobalContextProvider({ children }) {
         <GlobalContext.Provider value={{
             isDarkMode, setIsDarkMode,
             allSrNews, setAllSrNews,
-            getAllSrNewsArticles
+            getAllSrNewsArticles,
+            activeArticleId, setActiveArticleId
         }}>
 
             {children}
