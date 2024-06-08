@@ -26,7 +26,7 @@ const MainNewsDisplay = () => {
             </div>
             :
             <div className='card p-2' style={{ maxHeight: "80vh", overflow: "auto" }}>
-                <p className='opacity-50 text-center m-5'>Välj ett nyhetsartikel att visa</p>
+                <p className='opacity-50 text-center mt-5 mb-5'>Välj en nyhetsartikel att visa</p>
             </div>
 
         }
