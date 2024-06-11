@@ -8,8 +8,9 @@ const MainNewsDisplay = () => {
     const { allSrNews, activeArticleId } = useContext(GlobalContext)
 
     const articleToDisplay = allSrNews.find((article) => article.id === activeArticleId)
-    console.log(articleToDisplay)
-    console.log(activeArticleId)
+    console.log("activeArticleId:", activeArticleId)
+    console.log("artikel att visa, articleToDisplay:", articleToDisplay)
+
 
     return (<>
 
