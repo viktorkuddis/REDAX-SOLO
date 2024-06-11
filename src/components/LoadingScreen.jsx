@@ -2,7 +2,7 @@ import React from 'react'
 
 const LoadingScreen = () => {
     return (
-        <div className="card" style={{ position: "absolute", zIndex: "999", width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', flexDirection: "column", alignItems: 'center', gap: "2rem", textAlign: "center" }}>
+        <div className="card" style={{ position: "absolute", zIndex: "999", width: '100%', height: '100svh', display: 'flex', justifyContent: 'center', flexDirection: "column", alignItems: 'center', gap: "2rem", textAlign: "center" }}>
 
             <h1 style={{ marginTop: "auto" }}>REDAX SOLO</h1>
             <div className="spinner-border" role="status" />

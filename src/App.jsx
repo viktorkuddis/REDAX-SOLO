@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import GroupedFeed from './components/GroupedFeed'
 
 import './App.css'
 /*-----------------------------------------------------*/
@@ -56,8 +57,9 @@ function App() {
       {isLoading && <LoadingScreen />}
 
       <DarkModeBtn />
-      <div className=''>
 
+
+      <div className=''>
         <TryThings />
       </div>
 

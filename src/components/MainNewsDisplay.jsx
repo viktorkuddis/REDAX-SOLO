@@ -8,8 +8,9 @@ const MainNewsDisplay = () => {
     const { allSrNews, activeArticleId } = useContext(GlobalContext)
 
     const articleToDisplay = allSrNews.find((article) => article.id === activeArticleId)
-    console.log(articleToDisplay)
-    console.log(activeArticleId)
+    console.log("activeArticleId:", activeArticleId)
+    console.log("artikel att visa, articleToDisplay:", articleToDisplay)
+
 
     return (<>
 
@@ -26,7 +27,7 @@ const MainNewsDisplay = () => {
             </div>
             :
             <div className='card p-2' style={{ maxHeight: "80vh", overflow: "auto" }}>
-                <p className='opacity-50 text-center m-5'>Välj ett nyhetsartikel att visa</p>
+                <p className='opacity-50 text-center mt-5 mb-5'>Välj en nyhetsartikel att visa</p>
             </div>
 
         }
