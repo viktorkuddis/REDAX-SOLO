@@ -42,7 +42,7 @@ function getSrMediaPlayer(linkToArtikle) {
 // denna hämtar nyhetsfeeden baserat på srs kanalID.
 export function getSrNewsFeedByChannelId(channelId, kanalnamn) {
 
-    const nyheter = axios.get(`https://api.sr.se/api/rss/program/${channelId}?`)
+    const nyheter = axios.get(`https://api.sr.se/api/rss/program/${channelId}`)
         .then(result => {
 
             // console.log(result.data)
@@ -58,15 +58,22 @@ export function getSrNewsFeedByChannelId(channelId, kanalnamn) {
             // Varje nyhetr är nu ett samlat objekt i arrayen
             const items = Array.from(XMLDATA).map((item) => {
 
-                const imgSrc = hittaForstaBildsokvag(item.getElementsByTagName("content")[0].textContent)
+                //hämtar content elementet separat..
+                const contentElement = item.getElementsByTagName("content")[0];
+                // om contentelementeet finns så bearbetas det:
+                const imgSrc = contentElement ? hittaForstaBildsokvag(contentElement.textContent) : '';
+                let formattedContent = contentElement ? addMaxWidthToImages(contentElement.textContent) : '';
+                formattedContent = addTargetBlankToLinks(formattedContent)
 
                 const mediapPlayer = getSrMediaPlayer(item.getElementsByTagName("link")[0].getAttribute("href"))
 
-                const cleanSummary = taBortHtmlTaggar(item.getElementsByTagName("summary")[0].textContent)
+                //två steg som säkerhet ifall summary ibland blir undefind.
+                const summaryElement = item.getElementsByTagName("summary")[0];
+                const cleanSummary = summaryElement ? taBortHtmlTaggar(summaryElement.textContent) : '';
 
-                let formattedContent = addMaxWidthToImages(item.getElementsByTagName("content")[0].textContent)
-                formattedContent = addTargetBlankToLinks(formattedContent)
-                    ;
+
+
+
 
 
 
@@ -89,7 +96,8 @@ export function getSrNewsFeedByChannelId(channelId, kanalnamn) {
             return items
         })
         .catch((error) => {
-            // console.log(error);
+            console.log(error, kanalnamn);
+
             console.log(" Det gick inte att hämta data från kanal " + channelId + " " + kanalnamn)
 
 
