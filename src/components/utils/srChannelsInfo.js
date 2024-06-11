@@ -1,27 +1,32 @@
 const srChannelInfo = [
     {
         "channelName": "P1",
-        "channelId": 3632,
+        "channelId": 2946,
         "coverage": "nationell"
     },
-    {
-        "channelName": "P2",
-        "channelId": 163,
-        "coverage": "nationell"
-    },
+    // {
+    //     "channelName": "P2",
+    //     "channelId": 163,
+    //     "coverage": "nationell"
+    // },
     {
         "channelName": "P3",
         "channelId": 164,
         "coverage": "nationell"
     },
     {
+        "channelName": "P3 Nyheter",
+        "channelId": 5335,
+        "coverage": "nationell"
+    },
+    {
         "channelName": "P4 Blekinge",
-        "channelId": 213,
+        "channelId": 105,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Dalarna",
-        "channelId": 223,
+        "channelId": 161,
         "coverage": "lokal"
     },
     {
@@ -31,7 +36,7 @@ const srChannelInfo = [
     },
     {
         "channelName": "P4 Gävleborg",
-        "channelId": 210,
+        "channelId": 99,
         "coverage": "lokal"
     },
     {
@@ -41,12 +46,12 @@ const srChannelInfo = [
     },
     {
         "channelName": "P4 Halland",
-        "channelId": 220,
+        "channelId": 128,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Jämtland",
-        "channelId": 200,
+        "channelId": 78,
         "coverage": "lokal"
     },
     {
@@ -61,22 +66,22 @@ const srChannelInfo = [
     },
     {
         "channelName": "P4 Kristianstad",
-        "channelId": 211,
+        "channelId": 101,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Kronoberg",
-        "channelId": 214,
+        "channelId": 106,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Malmöhus",
-        "channelId": 207,
+        "channelId": 96,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Norrbotten",
-        "channelId": 209,
+        "channelId": 98,
         "coverage": "lokal"
     },
     {
@@ -91,42 +96,42 @@ const srChannelInfo = [
     },
     {
         "channelName": "P4 Stockholm",
-        "channelId": 701,
+        "channelId": 103,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Sörmland",
-        "channelId": 202,
+        "channelId": 87,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Uppland",
-        "channelId": 218,
+        "channelId": 114,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Värmland",
-        "channelId": 204,
+        "channelId": 93,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Väst",
-        "channelId": 219,
+        "channelId": 125,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Västerbotten",
-        "channelId": 215,
+        "channelId": 109,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Västernorrland",
-        "channelId": 216,
+        "channelId": 110,
         "coverage": "lokal"
     },
     {
         "channelName": "P4 Västmanland",
-        "channelId": 217,
+        "channelId": 112,
         "coverage": "lokal"
     },
     {
@@ -136,39 +141,39 @@ const srChannelInfo = [
     },
     {
         "channelName": "P4 Östergötland",
-        "channelId": 222,
+        "channelId": 160,
         "coverage": "lokal"
     },
     {
         "channelName": "SR Sápmi",
-        "channelId": 224,
+        "channelId": 2327,
         "coverage": "nationell"
     },
-    {
-        "channelName": "Sveriges Radio Finska",
-        "channelId": 226,
-        "coverage": "nationell"
-    },
-    {
-        "channelName": "P6",
-        "channelId": 166,
-        "coverage": "nationell"
-    },
+    // {
+    //     "channelName": "Sveriges Radio Finska",
+    //     "channelId": 4998,
+    //     "coverage": "nationell"
+    // },
+    // {
+    //     "channelName": "P6",
+    //     "channelId": 166,
+    //     "coverage": "nationell"
+    // },
     {
         "channelName": "P3 Din gata",
         "channelId": 2576,
         "coverage": "nationell"
     },
-    {
-        "channelName": "P2 Musik",
-        "channelId": 2562,
-        "coverage": "nationell"
-    },
-    {
-        "channelName": "Radioapans knattekanal",
-        "channelId": 2755,
-        "coverage": "nationell"
-    },
+    // {
+    //     "channelName": "P2 Musik",
+    //     "channelId": 2562,
+    //     "coverage": "nationell"
+    // },
+    // {
+    //     "channelName": "Radioapans knattekanal",
+    //     "channelId": 2755,
+    //     "coverage": "nationell"
+    // },
     {
         "channelName": "SR Extra01",
         "channelId": 2383,
@@ -249,11 +254,41 @@ const srChannelInfo = [
         "channelId": 5381,
         "coverage": "nationell"
     },
+    // {
+    //     "channelName": "Studio Ett",
+    //     "channelId": 1637,
+    //     "coverage": "nationell"
+    // },
     {
-        "channelName": "P4 Plus",
-        "channelId": 4951,
-        "coverage": "lokal"
+        "channelName": "Ekot Nyheter",
+        "channelId": 83,
+        "coverage": "nationell"
     },
+    {
+        "channelName": "Kulturnytt",
+        "channelId": 478,
+        "coverage": "nationell"
+    },
+    {
+        "channelName": "Vetenskapsradion Nyheter",
+        "channelId": 406,
+        "coverage": "nationell"
+    },
+    {
+        "channelName": "Klartext – nyheter på ett enklare sätt",
+        "channelId": 493,
+        "coverage": "nationell"
+    },
+    // {
+    //     "channelName": "P1 Morgon",
+    //     "channelId": 1650,
+    //     "coverage": "nationell"
+    // },
+    // {
+    //     "channelName": "P4 Plus",
+    //     "channelId": 4951,
+    //     "coverage": "lokal"
+    // },
     {
         "channelName": "P4 Södertälje",
         "channelId": 5283,
