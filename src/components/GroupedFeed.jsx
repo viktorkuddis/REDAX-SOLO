@@ -28,8 +28,20 @@ const GroupedFeed = ({ groupedNewsArray }) => {
                             <b>{group.label}</b>
                         </Accordion.Header>
 
-                        <Accordion.Body>
-                            {group.articles.map((a) => (<NewsCard key={a.id} article={a} />))}
+                        <Accordion.Body className='p-0'>
+                            {/* dekorativ lije */}
+                            <div style={{ height: "0.25rem", width: "100%" }} className='bg-secondary-subtle'></div>
+
+                            {group.articles.map((a) => (
+                                <div key={a.id}>
+                                    <NewsCard key={a.id} article={a} />
+
+                                    {/* dekorativ lije */}
+                                    <div style={{ height: "0.25rem", width: "100%" }} className='bg-secondary-subtle'></div>
+                                </div>))}
+                            {/* dekorativ lije */}
+                            <div style={{ height: "0.25rem", width: "100%" }} className='bg-secondary-subtle'></div>
+
                         </Accordion.Body>
 
                     </Accordion.Item>)
