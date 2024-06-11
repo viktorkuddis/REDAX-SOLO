@@ -18,7 +18,7 @@ const GroupedFeed = ({ groupedNewsArray }) => {
 
     return (<>
         {/* de aktiva här är de positioner i arrayen som alltid kommer vara öppna när man startar. */}
-        <Accordion flush defaultActiveKey={[0, 1, 2]} alwaysOpen >
+        <Accordion flush defaultActiveKey={[0, 1, 2, 3, 4, 5, 6]} alwaysOpen >
 
             {groupedNewsArray.map((group, index) => {
                 return (
