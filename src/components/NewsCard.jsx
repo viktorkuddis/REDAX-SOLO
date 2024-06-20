@@ -1,5 +1,6 @@
 import GlobalContext from "../../context/GlobalContext"
 import { useContext } from "react"
+import { formatDateAndTime } from "./utils/dateFormatsUtils"
 
 
 const NewsCard = ({ article }) => {
@@ -33,7 +34,20 @@ const NewsCard = ({ article }) => {
 
                     <small><small>{article.mainSource} {article.subSource}</small></small>
                     <h2 className="h5 m-0">{article.title}</h2>
-                    <p className="mb-1"><small> <small>{article.published} {article.updated}</small></small></p>
+                    <p className="mb-1">
+
+
+                        <small><small>{formatDateAndTime(article.published)}
+                            {/* eftersom redaktioner ibland skriver sina texter innan de publiceras så görs jämföreleen på detta vis " < " och endast visar uppdaterat om den är uppdaterad efter att den är publicerad. */}
+                            {article.published < article.updated && (
+                                <><i>, Upd.: <mark>{formatDateAndTime(article.updated)}</mark></i></>
+                            )}
+                        </small></small>
+
+
+
+
+                    </p>
                     <p className="m-0 lh-1" style={{
                         overflow: 'hidden',
                         display: '-webkit-box',
