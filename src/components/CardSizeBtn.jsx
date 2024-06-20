@@ -28,8 +28,8 @@ const CardSizeBtn = () => {
 
 
             {cardSize == "small"
-                ? <i class="bi bi-view-stacked"></i>
-                : <i class="bi bi-view-list"></i>}
+                ? <i className="bi bi-view-stacked"></i>
+                : <i className="bi bi-view-list"></i>}
 
 
 

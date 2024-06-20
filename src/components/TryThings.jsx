@@ -40,7 +40,7 @@ const TryThings = () => {
             <div className='row'>
                 <div className='col-6'>
 
-                    <div className='card' style={{ maxHeight: "90svh", overflowY: "auto" }}>
+                    <div className='card' style={{ maxHeight: "90svh", overflowY: "auto", overflowX: "hidden" }}>
                         <h2>Senaste Nytt:</h2>
                         <GroupedFeed groupedNewsArray={groupedNewsByTimes} />
 
