@@ -32,7 +32,16 @@ const NewsCard = ({ article }) => {
 
                 <div className="col-1 card-body p-2 lh-sm">
 
-                    <small><small>{article.mainSource} {article.subSource}</small></small>
+                    <small>
+                        <span className='badge text-body-secondary bg-body-secondary'>
+                            {article.subSource}
+                        </span>
+                        <span className='badge text-body-secondary bg-body-tertiary'>
+                            {article.mainSource}
+                        </span>
+
+                    </small>
+
                     <h2 className="h5 m-0">{article.title}</h2>
                     <p className="mb-1">
 
