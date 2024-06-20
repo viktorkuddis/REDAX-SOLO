@@ -21,6 +21,10 @@ export function GlobalContextProvider({ children }) {
     // fallback behöver vara false för annars kommer de sättas till true när man återbesöker sidan och får false från local storage.
     const [isDarkMode, setIsDarkMode] = useState(JSON.parse(localStorage.getItem("isDarkMode")) || false)
     /* ********************************************************* */
+    /* ********************************************************* */
+    // Storlek på nyhetskorten som visas i listan
+    const [cardSize, setCardSize] = useState(JSON.parse(localStorage.getItem("cardSize")) || "normal")
+    /* ********************************************************* */
 
     const [allSrNews, setAllSrNews] = useState([
         {
@@ -128,6 +132,7 @@ export function GlobalContextProvider({ children }) {
         //provider av min kontext
         <GlobalContext.Provider value={{
             isDarkMode, setIsDarkMode,
+            cardSize, setCardSize,
             allSrNews, setAllSrNews,
             getAllSrNewsArticles,
             activeArticleId, setActiveArticleId
