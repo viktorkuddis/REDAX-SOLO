@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import GlobalContext from '../context/GlobalContext';
 import DarkModeBtn from './components/DarkModeBtn';
+import CardSizeBtn from './components/CardSizeBtn'
 import TryThings from './components/TryThings';
 import LoadingScreen from './components/LoadingScreen';
 
@@ -56,7 +57,7 @@ function App() {
 
       {isLoading && <LoadingScreen />}
 
-      <DarkModeBtn />
+      <DarkModeBtn /> <CardSizeBtn />
 
 
       <div className=''>

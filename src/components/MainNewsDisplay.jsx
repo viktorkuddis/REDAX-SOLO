@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import GlobalContext from '../../context/GlobalContext'
-
+import { formatDateAndTime } from './utils/dateFormatsUtils'
 
 const MainNewsDisplay = () => {
 
@@ -17,9 +17,25 @@ const MainNewsDisplay = () => {
         {articleToDisplay
             ?
             <div className='card p-2' style={{ maxHeight: "80vh", overflow: "auto" }}>
-                <p>{articleToDisplay.mainSource}{articleToDisplay.subSource}</p>
+
+                <p>
+                    <span className='badge text-body-secondary bg-body-secondary'>
+                        {articleToDisplay.subSource}
+                    </span>
+                    <span className='badge text-body-secondary bg-body-tertiary'>
+                        {articleToDisplay.mainSource}
+                    </span>
+                </p>
+
                 <h2>{articleToDisplay.title}</h2>
-                <p>{articleToDisplay.published} {articleToDisplay.updated}</p>
+
+                <small><small>{formatDateAndTime(articleToDisplay.published)}
+                    {/* eftersom redaktioner ibland skriver sina texter innan de publiceras så görs jämföreleen på detta vis " < " och endast visar uppdaterat om den är uppdaterad efter att den är publicerad. */}
+                    {articleToDisplay.published < articleToDisplay.updated && (
+                        <><i>, Upd.: <mark>{formatDateAndTime(articleToDisplay.updated)}</mark></i></>
+                    )}
+                </small></small>
+
                 <hr />
                 <div dangerouslySetInnerHTML={{ __html: articleToDisplay.content }} />
 
