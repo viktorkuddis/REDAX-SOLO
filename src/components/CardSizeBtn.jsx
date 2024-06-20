@@ -25,8 +25,15 @@ const CardSizeBtn = () => {
 
         <button className='btn btn-primary'
             onClick={handleCardSize}>
-            <i className="bi bi-circle-half"></i>
-            nu är korten {cardSize}
+
+
+            {cardSize == "small"
+                ? <i class="bi bi-view-stacked"></i>
+                : <i class="bi bi-view-list"></i>}
+
+
+
+
         </button>
 
         {/* Testtext: */}
