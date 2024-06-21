@@ -34,7 +34,7 @@ const MainNewsDisplay = () => {
 
 
 
-                <h2 className="mb-0 display-6" style={{ fontSize: '1.7rem' }}>{articleToDisplay.title}</h2>
+                <h2 className="mb-0 display-6" style={{ fontSize: '170%' }}>{articleToDisplay.title}</h2>
 
 
 
