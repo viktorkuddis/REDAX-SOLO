@@ -46,6 +46,7 @@ const NewsCard = ({ article }) => {
                         </small>
 
                         <h2 className="h5 m-0">{article.title}</h2>
+
                         <p className="mb-1">
 
 
