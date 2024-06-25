@@ -1,0 +1,6 @@
+/* Tillämpa box-sizing: border-box på alla element */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
