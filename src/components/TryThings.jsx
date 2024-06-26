@@ -51,7 +51,7 @@ const TryThings = () => {
                     </div>
                 </div>
                 <div className='col-6'>
-                    <MainNewsDisplay articleToDisplay={allSrNews[0]} />
+                    <MainNewsDisplay />
                 </div>
             </div>
         </div >

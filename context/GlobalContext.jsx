@@ -25,7 +25,13 @@ export function GlobalContextProvider({ children }) {
     // Storlek på nyhetskorten som visas i listan
     const [cardSize, setCardSize] = useState(JSON.parse(localStorage.getItem("cardSize")) || "normal")
     /* ********************************************************* */
-
+    // filterQuerys
+    const [querys, setQuerys] = useState({
+        mainSources: [],
+        subSources: [],
+        coverages: []
+    })
+    /* ********************************************************* */
     const [allSrNews, setAllSrNews] = useState([
         {
             id: "DummyID1",
@@ -135,7 +141,8 @@ export function GlobalContextProvider({ children }) {
             cardSize, setCardSize,
             allSrNews, setAllSrNews,
             getAllSrNewsArticles,
-            activeArticleId, setActiveArticleId
+            activeArticleId, setActiveArticleId,
+            querys, setQuerys
         }}>
 
             {children}
