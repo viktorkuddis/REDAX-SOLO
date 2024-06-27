@@ -6,6 +6,7 @@ import GroupedFeed from './GroupedFeed';
 
 import NewsCard from './NewsCard';
 import MainNewsDisplay from './MainNewsDisplay';
+import FilterPanel from './FilterPanel';
 
 import { sortArticlesByCustomTimespans } from './utils/filteringUtils';
 
@@ -34,9 +35,12 @@ const TryThings = () => {
 
     return (<>
 
-        {/* <GroupedFeed groupedNewsArray={groupedNewsByTimes} /> */}
+
 
         <div className='container-fluid'>
+            <br />
+            <FilterPanel />
+            <br />
             <div className='row'>
                 <div className='col-6'>
 
@@ -44,14 +48,10 @@ const TryThings = () => {
                         <h2>Senaste Nytt:</h2>
                         <GroupedFeed groupedNewsArray={groupedNewsByTimes} />
 
-                        {/* {allSrNews.map((article) => (
-                            <NewsCard key={article.id} article={article} />
-                        ))} */}
-
                     </div>
                 </div>
                 <div className='col-6'>
-                    <MainNewsDisplay articleToDisplay={allSrNews[0]} />
+                    <MainNewsDisplay />
                 </div>
             </div>
         </div >
