@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { useContext } from 'react';
 import GlobalContext from '../../context/GlobalContext';
+//just for console:
+import { getSrNews } from './utils/getSrNews';
+import { gatALL } from './utils/getCombinedNewsFeed';
 
 import GroupedFeed from './GroupedFeed';
 
@@ -37,7 +40,7 @@ const TryThings = () => {
 
 
 
-        <div className='container-fluid'>
+        {/* <div className='container-fluid'>
             <br />
             <FilterPanel />
             <br />
@@ -54,7 +57,7 @@ const TryThings = () => {
                     <MainNewsDisplay />
                 </div>
             </div>
-        </div >
+        </div > */}
 
 
     </>
