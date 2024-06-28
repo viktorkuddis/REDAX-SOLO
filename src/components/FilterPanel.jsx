@@ -24,18 +24,18 @@ import SplitButton from 'react-bootstrap/SplitButton';
 const FilterPanel = () => {
 
 
-    const { allSrNews, querys, setQuerys } = useContext(GlobalContext)
-    // console.log(allSrNews)
+    const { masterNewsFeed, querys, setQuerys } = useContext(GlobalContext)
+    // console.log(masterNewsFeed)
 
     const mainSources = []
-    allSrNews.forEach((article) => {
+    masterNewsFeed.forEach((article) => {
         if (!mainSources.includes(article.mainSource)) {
             mainSources.push(article.mainSource)
         }
     })
 
     const subSources = [];
-    allSrNews.forEach((article) => {
+    masterNewsFeed.forEach((article) => {
         // Kontrollerar om subSources redan innehåller subSource från den nuvarande artikeln
         if (!subSources.some(item => item.subSource === article.subSource)) {
             // Om subSource inte redan finns i subSources, lägg till den tillsammans med coverage i subSources-arrayen
@@ -48,7 +48,7 @@ const FilterPanel = () => {
     });
 
     const coverages = []
-    allSrNews.forEach((article) => {
+    masterNewsFeed.forEach((article) => {
         if (!coverages.includes(article.coverage)) {
             coverages.push(article.coverage)
         }

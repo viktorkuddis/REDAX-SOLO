@@ -114,7 +114,7 @@ export async function getSrNews() {
                 });
 
                 // console.log(completedArray)
-                // setAllSrNews(completedArray)
+                // setMasterNewsFeed(completedArray)
             }).catch((err) => { console.log(err) })
     })
 

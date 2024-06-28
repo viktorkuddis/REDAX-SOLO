@@ -6,11 +6,11 @@ import { formatDateAndTime } from './utils/dateFormatsUtils'
 const MainNewsDisplay = () => {
 
     const {
-        allSrNews,
+        masterNewsFeed,
         activeArticleId, setActiveArticleId
     } = useContext(GlobalContext)
 
-    const articleToDisplay = allSrNews.find((article) => article.id === activeArticleId)
+    const articleToDisplay = masterNewsFeed.find((article) => article.id === activeArticleId)
     console.log("activeArticleId:", activeArticleId)
     console.log("artikel att visa, articleToDisplay:", articleToDisplay)
 

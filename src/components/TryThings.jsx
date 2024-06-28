@@ -16,8 +16,11 @@ import { sortArticlesByCustomTimespans } from './utils/filteringUtils';
 
 const TryThings = () => {
 
+    //masterNewsFeed, setMasterNewsFeed
+    const { masterNewsFeed, setMasterNewsFeed, getAllSrNewsArticles } = useContext(GlobalContext)
 
-    //Vi hämtar HELA feedet, sorterar det efter timespanns,  och assignar det till en variabel:
+
+    //Vi hämtar HELA feedet från apier, placera dom alla i context, sorterar det efter timespanns, och assignar sorterade i en variabel:
     const [groupedNewsByTimeSpans, setGroupedNewsByTimeSpans] = useState(null);
     useEffect(() => {
         (async () => {
@@ -25,6 +28,8 @@ const TryThings = () => {
 
             const combinedNewsFeed = await getCombinedNewsFeed()
             console.log("variabeln combinedNewsFeed: ", combinedNewsFeed)
+
+            setMasterNewsFeed(combinedNewsFeed)
 
             const sortedArticles = sortArticlesByCustomTimespans(combinedNewsFeed, "published")
             setGroupedNewsByTimeSpans(sortedArticles)
@@ -34,22 +39,21 @@ const TryThings = () => {
 
 
 
-    const { allSrNews, getAllSrNewsArticles } = useContext(GlobalContext)
 
     // detta objektet kan vi leka med för att se hur de serut på sidan:
-    // allSrNews[2].subSource = ""
-    // console.log(allSrNews[0].content)
+    // masterNewsFeed[2].subSource = ""
+    // console.log(masterNewsFeed[0].content)
 
 
 
     // kallar på funktoin som hämtar data från apiet.
     useEffect(() => { getAllSrNewsArticles() }, [])
 
-    // console.log(allSrNews);
+    // console.log(masterNewsFeed);
 
     //skapa array baserat på timmar sedan den publicerades:
 
-    const groupedNewsByTimes = sortArticlesByCustomTimespans(allSrNews, "published")
+    const groupedNewsByTimes = sortArticlesByCustomTimespans(masterNewsFeed, "published")
     // console.log(groupedNewsByTimes)
 
 

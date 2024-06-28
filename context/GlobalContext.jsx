@@ -32,7 +32,11 @@ export function GlobalContextProvider({ children }) {
         coverages: []
     })
     /* ********************************************************* */
-    const [allSrNews, setAllSrNews] = useState([
+
+
+
+    /* ********************************************************* */
+    const [masterNewsFeed, setMasterNewsFeed] = useState([
         {
             id: "DummyID1",
             title: "Den stor placeholderdagen lockar generella meningar till Lorem Ipsum."
@@ -75,6 +79,7 @@ export function GlobalContextProvider({ children }) {
 
     /* ********************************************************* */
 
+    // !! TODO TODO:  OBS! DENNA FUNTIONEN SKA INTE FINNAS: MEN BEHÖVER STÄDA LITER RUNT DEN FÖR ATT KUNNA TA BORT DEN : DETTA HANTERAS SEPARAT NU !!!!! 
     // Denna hämtar allt från sr-apiet och skickar in de i arrayen för Alla sr-nyheter..
     function getAllSrNewsArticles() {
         let completedArray = [];
@@ -121,8 +126,8 @@ export function GlobalContextProvider({ children }) {
                     completedArray.sort((a, b) => {
                         return new Date(b.published) - new Date(a.published);
                     });
-
-                    setAllSrNews(completedArray)
+                    // !! UTKOMMENTERAT HÄR SÅ ATT DEN INTE STÖR:
+                    // setMasterNewsFeed(completedArray)
                 }).catch((err) => { console.log(err) })
         })
     }
@@ -139,7 +144,7 @@ export function GlobalContextProvider({ children }) {
         <GlobalContext.Provider value={{
             isDarkMode, setIsDarkMode,
             cardSize, setCardSize,
-            allSrNews, setAllSrNews,
+            masterNewsFeed, setMasterNewsFeed,
             getAllSrNewsArticles,
             activeArticleId, setActiveArticleId,
             querys, setQuerys
