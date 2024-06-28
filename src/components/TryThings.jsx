@@ -1,18 +1,38 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
 import GlobalContext from '../../context/GlobalContext';
+//just for console:
+import { getCombinedNewsFeed } from './utils/getCombinedNewsFeed';
 
 import GroupedFeed from './GroupedFeed';
-
-import NewsCard from './NewsCard';
 import MainNewsDisplay from './MainNewsDisplay';
+import FilterPanel from './FilterPanel';
 
 import { sortArticlesByCustomTimespans } from './utils/filteringUtils';
 
 
 
 
+
 const TryThings = () => {
+
+
+    //Vi hämtar HELA feedet, sorterar det efter timespanns,  och assignar det till en variabel:
+    const [groupedNewsByTimeSpans, setGroupedNewsByTimeSpans] = useState(null);
+    useEffect(() => {
+        (async () => {
+            console.log("detta är min anonyma funktion")
+
+            const combinedNewsFeed = await getCombinedNewsFeed()
+            console.log("variabeln combinedNewsFeed: ", combinedNewsFeed)
+
+            const sortedArticles = sortArticlesByCustomTimespans(combinedNewsFeed, "published")
+            setGroupedNewsByTimeSpans(sortedArticles)
+        })()
+    }, [])
+
+
+
 
     const { allSrNews, getAllSrNewsArticles } = useContext(GlobalContext)
 
@@ -32,26 +52,24 @@ const TryThings = () => {
     const groupedNewsByTimes = sortArticlesByCustomTimespans(allSrNews, "published")
     // console.log(groupedNewsByTimes)
 
+
+
     return (<>
-
-        {/* <GroupedFeed groupedNewsArray={groupedNewsByTimes} /> */}
-
         <div className='container-fluid'>
+            <br />
+            <FilterPanel />
+            <br />
             <div className='row'>
                 <div className='col-6'>
 
-                    <div className='card' style={{ maxHeight: "90svh", overflowY: "auto" }}>
+                    <div className='card' style={{ maxHeight: "90svh", overflowY: "auto", overflowX: "hidden" }}>
                         <h2>Senaste Nytt:</h2>
-                        <GroupedFeed groupedNewsArray={groupedNewsByTimes} />
-
-                        {/* {allSrNews.map((article) => (
-                            <NewsCard key={article.id} article={article} />
-                        ))} */}
+                        <GroupedFeed groupedNewsArray={groupedNewsByTimeSpans} />
 
                     </div>
                 </div>
                 <div className='col-6'>
-                    <MainNewsDisplay articleToDisplay={allSrNews[0]} />
+                    <MainNewsDisplay />
                 </div>
             </div>
         </div >

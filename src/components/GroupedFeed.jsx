@@ -7,6 +7,7 @@ import NewsCard from './NewsCard';
 
 const GroupedFeed = ({ groupedNewsArray }) => {
 
+    /* --- --- --- --- --- --- --- --- --- --- */
     // i denna skickar vi array med grupperade nyheter.
     // arrayen ska bestå av objekt med label samt en array med artikelobjekt.
     // EXEMPEL:
@@ -15,37 +16,45 @@ const GroupedFeed = ({ groupedNewsArray }) => {
             articles: [ {}, {}, {}] 
         }]
     */
+    /* --- --- --- --- --- --- --- --- --- --- */
+
 
     return (<>
         {/* de aktiva här är de positioner i arrayen som alltid kommer vara öppna när man startar. */}
-        <Accordion flush defaultActiveKey={[0, 1, 2]} alwaysOpen >
 
-            {groupedNewsArray.map((group, index) => {
-                return (
-                    <Accordion.Item key={group.label} eventKey={index} >
+        <Accordion flush defaultActiveKey={[0, 1, 2]} alwaysOpen>
 
-                        <Accordion.Header>
-                            <p className='m-0 m-0'><b>{group.label}</b> <small>({group.articles.length})</small></p>
-                        </Accordion.Header>
+            {/* om det finns en array med grupperade nyheter definerad så kommer den försöka visas. annars inte. */}
+            {groupedNewsArray &&
+                groupedNewsArray.map((group, index) => {
+                    return (
+                        <Accordion.Item key={group.label} eventKey={index} >
 
-                        <Accordion.Body className='p-0'>
-                            {/* dekorativ lije */}
-                            <div style={{ height: "0.25rem", width: "100%" }} className='bg-secondary-subtle'></div>
+                            <Accordion.Header>
+                                <p className='m-0 m-0'><b>{group.label}</b> <small>({group.articles.length})</small></p>
+                            </Accordion.Header>
 
-                            {group.articles.map((a) => (
-                                <div key={a.id}>
-                                    <NewsCard key={a.id} article={a} />
+                            <Accordion.Body className='p-0'>
+                                {/* dekorativ lije */}
+                                <div style={{ height: "0.25rem", width: "100%" }} className='bg-secondary-subtle'></div>
 
-                                    {/* dekorativ lije */}
-                                    <div style={{ height: "0.25rem", width: "100%" }} className='bg-secondary-subtle'></div>
-                                </div>))}
-                            {/* dekorativ lije */}
-                            <div style={{ height: "0.25rem", width: "100%" }} className='bg-secondary-subtle'></div>
+                                {group.articles.map((a) => (
+                                    <div key={a.id}>
+                                        <NewsCard key={a.id} article={a} />
 
-                        </Accordion.Body>
+                                        {/* dekorativ lije */}
+                                        <div style={{ height: "0.25rem", width: "100%" }} className='bg-secondary-subtle'></div>
+                                    </div>))}
+                                {/* dekorativ lije */}
+                                <div style={{ height: "0.25rem", width: "100%" }} className='bg-secondary-subtle'></div>
 
-                    </Accordion.Item>)
-            })}
+                            </Accordion.Body>
+                        </Accordion.Item>)
+
+                }
+                )
+            }
+
 
         </Accordion >
     </>

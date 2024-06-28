@@ -21,7 +21,17 @@ export function GlobalContextProvider({ children }) {
     // fallback behöver vara false för annars kommer de sättas till true när man återbesöker sidan och får false från local storage.
     const [isDarkMode, setIsDarkMode] = useState(JSON.parse(localStorage.getItem("isDarkMode")) || false)
     /* ********************************************************* */
-
+    /* ********************************************************* */
+    // Storlek på nyhetskorten som visas i listan
+    const [cardSize, setCardSize] = useState(JSON.parse(localStorage.getItem("cardSize")) || "normal")
+    /* ********************************************************* */
+    // filterQuerys
+    const [querys, setQuerys] = useState({
+        mainSources: [],
+        subSources: [],
+        coverages: []
+    })
+    /* ********************************************************* */
     const [allSrNews, setAllSrNews] = useState([
         {
             id: "DummyID1",
@@ -128,9 +138,11 @@ export function GlobalContextProvider({ children }) {
         //provider av min kontext
         <GlobalContext.Provider value={{
             isDarkMode, setIsDarkMode,
+            cardSize, setCardSize,
             allSrNews, setAllSrNews,
             getAllSrNewsArticles,
-            activeArticleId, setActiveArticleId
+            activeArticleId, setActiveArticleId,
+            querys, setQuerys
         }}>
 
             {children}
