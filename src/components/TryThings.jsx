@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { useContext } from 'react';
 import GlobalContext from '../../context/GlobalContext';
+//just for console:
+import { getSrNews } from './utils/getSrNews';
+import { getCombinedNewsFeed } from './utils/getCombinedNewsFeed';
 
 import GroupedFeed from './GroupedFeed';
 
@@ -10,6 +13,10 @@ import FilterPanel from './FilterPanel';
 
 import { sortArticlesByCustomTimespans } from './utils/filteringUtils';
 
+const combinedNewsFeed = await getCombinedNewsFeed()
+console.log("variabeln combinedNewsFeed: ", combinedNewsFeed)
+
+const groupedNewsByTimesTEST = sortArticlesByCustomTimespans(combinedNewsFeed, "published")
 
 
 
@@ -33,10 +40,9 @@ const TryThings = () => {
     const groupedNewsByTimes = sortArticlesByCustomTimespans(allSrNews, "published")
     // console.log(groupedNewsByTimes)
 
+
+
     return (<>
-
-
-
         <div className='container-fluid'>
             <br />
             <FilterPanel />
@@ -46,7 +52,7 @@ const TryThings = () => {
 
                     <div className='card' style={{ maxHeight: "90svh", overflowY: "auto", overflowX: "hidden" }}>
                         <h2>Senaste Nytt:</h2>
-                        <GroupedFeed groupedNewsArray={groupedNewsByTimes} />
+                        <GroupedFeed groupedNewsArray={groupedNewsByTimesTEST} />
 
                     </div>
                 </div>

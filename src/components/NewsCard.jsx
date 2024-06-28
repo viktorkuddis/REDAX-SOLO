@@ -20,7 +20,10 @@ const NewsCard = ({ article }) => {
     return (
 
 
-        <div className="card m-1 p-1 border-0" onClick={() => { setActiveArticleId(article.id), console.log(activeArticleId) }} style={{ cursor: 'pointer', }}>
+        <div className={activeArticleId == article.id
+            ? "card rounded-0 m-0 p-2 border-0 bg-secondary-subtle"
+            : "card rounded-0 m-0 p-2 border-0"}
+            onClick={() => { setActiveArticleId(article.id), console.log(activeArticleId) }} style={{ cursor: 'pointer', }}>
 
             {cardSize == "normal" ?
 
@@ -48,6 +51,8 @@ const NewsCard = ({ article }) => {
                         <h2 className="h5 m-0">{article.title}</h2>
 
                         <p className="mb-1">
+
+
 
 
                             <small><small>{formatDateAndTime(article.published)}
