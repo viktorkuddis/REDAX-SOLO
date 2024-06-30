@@ -24,8 +24,6 @@ const TryThings = () => {
     const [groupedNewsByTimeSpans, setGroupedNewsByTimeSpans] = useState(null);
     useEffect(() => {
         (async () => {
-            console.log("detta är min anonyma funktion")
-
             const combinedNewsFeed = await getCombinedNewsFeed()
             console.log("variabeln combinedNewsFeed: ", combinedNewsFeed)
 

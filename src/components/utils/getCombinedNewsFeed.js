@@ -8,15 +8,15 @@ export async function getCombinedNewsFeed() {
 
     // Anropa getSrNews och spara resultatet i en variabel
     const srNewsFeed = await getSrNews();
-    console.log("sr: ", srNewsFeed)
+    // console.log("sr: ", srNewsFeed)
     combinedNewsFeed.push(...srNewsFeed)
-    console.log("combined: ", combinedNewsFeed)
+    // console.log("combined: ", combinedNewsFeed)
 
 
     const PLACEHOLDERNewsFeed = getPLACEHOLDERNews();
-    console.log("PLACEHOLDERNEWS: ", PLACEHOLDERNewsFeed)
+    // console.log("PLACEHOLDERNEWS: ", PLACEHOLDERNewsFeed)
     combinedNewsFeed.push(...PLACEHOLDERNewsFeed)
-    console.log("combined: ", combinedNewsFeed)
+    // console.log("combined: ", combinedNewsFeed)
 
 
     // Sortera arrayen här eftersom arrayerna från olika källor bara läggs efter varanra.

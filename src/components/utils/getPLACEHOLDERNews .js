@@ -57,7 +57,7 @@ export function getPLACEHOLDERNews() {
             mainSource: "⚠️ HUVUDTIDNINGEN ETT",
             subSource: "Livsstilmagazinet",
             sourceType: "Viral/Klickvänligt",
-            coverage: "Natioinellt",
+            coverage: "Nationellt",
             image: "https://plus.unsplash.com/premium_photo-1664527009806-2db3830199b7?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             media: "Bild",
             summary: "En bonde har klätt sina höns i små kostymer för en lokal modevisning.",

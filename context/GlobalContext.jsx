@@ -29,6 +29,7 @@ export function GlobalContextProvider({ children }) {
     const [querys, setQuerys] = useState({
         mainSources: [],
         subSources: [],
+        sourceTypes: [],
         coverages: []
     })
     /* ********************************************************* */

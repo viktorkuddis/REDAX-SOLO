@@ -11,8 +11,8 @@ const MainNewsDisplay = () => {
     } = useContext(GlobalContext)
 
     const articleToDisplay = masterNewsFeed.find((article) => article.id === activeArticleId)
-    console.log("activeArticleId:", activeArticleId)
-    console.log("artikel att visa, articleToDisplay:", articleToDisplay)
+    // console.log("activeArticleId:", activeArticleId)
+    // console.log("artikel att visa, articleToDisplay:", articleToDisplay)
 
 
     return (<>
