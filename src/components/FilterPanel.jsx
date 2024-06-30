@@ -108,25 +108,53 @@ const FilterPanel = () => {
     }, [sourceRegister])
 
     function handleToggleQueryItem(queryKey, queryValueToToggle) {
-        const valuesArray = querys[queryKey]; // Använder bracket notation för att komma åt egenskapen. inte dot här  eftersom jag hämtar egenskapen dynamiskt :) 
+        const queryKeyValues = querys[queryKey]; // Använder bracket notation för att komma åt egenskapen. inte dot här  eftersom jag hämtar egenskapen dynamiskt :) 
 
-        // console.log("Före ändring:", valuesArray);
+        // console.log("Före ändring:", queryKeyValues);
 
-        if (!valuesArray.includes(queryValueToToggle)) {
-            valuesArray.push(queryValueToToggle);
+        if (!queryKeyValues.includes(queryValueToToggle)) {
+            queryKeyValues.push(queryValueToToggle);
         } else {
-            const toggleIndex = valuesArray.indexOf(queryValueToToggle);
-            valuesArray.splice(toggleIndex, 1);
+            //tar bort den ur arrayen
+            const toggleIndex = queryKeyValues.indexOf(queryValueToToggle);
+            queryKeyValues.splice(toggleIndex, 1);
         }
 
-        // console.log("Efter ändring:", valuesArray);
+        // console.log("Efter ändring:", queryKeyValues);
 
         setQuerys(prevState => ({
             ...prevState,
-            [queryKey]: valuesArray
+            [queryKey]: queryKeyValues
         }));
         console.log("🧠 QUERYS  :", querys)
     }
+
+
+
+    function handleToggleALL(queryKey, queryValueToToggle) {
+        const queryKeyValues = querys[queryKey];
+        // values array innehåller här det som den keyn i query jag vill komma åt.
+        // console.log(queryKeyValues);
+
+        //Sätter keyn till en tom array om den har värden redan.
+        if (queryKeyValues.length) {
+            setQuerys(prevState => ({
+                ...prevState,
+                [queryKey]: []
+            }));
+        } else {
+            //annars blir den de värden som skickas in...
+            setQuerys(prevState => ({
+                ...prevState,
+                [queryKey]: [...queryValueToToggle]
+            }));
+        }
+        console.log("🧠 QUERYS  :", querys);
+    }
+
+
+
+
 
     return (<>
 
@@ -134,7 +162,14 @@ const FilterPanel = () => {
 
             <h4>FILTRERA EFTER KÄLLA:</h4>
 
-            <br />Täckning:   <div className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1'> Alla </div><br />
+            <br />Täckning:
+            <div
+                className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1 mx-2'
+                onClick={() => { handleToggleALL("sourceTypes", sourceTypes) }}
+            >
+                Alla / Inga
+            </div>
+            <br />
             {coverages.map((coverage, index) => coverage && (
                 <div key={index} className={querys.coverages.includes(coverage)
                     ? 'btn btn-primary btn-sm rounded-pill  me-1 my-1'
@@ -145,7 +180,14 @@ const FilterPanel = () => {
 
             ))}
 
-            <br />Typ:  <div className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1'> Alla </div><br />
+            <br />Typ:
+            <div
+                className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1 mx-2'
+                onClick={() => { handleToggleALL("sourceTypes", sourceTypes) }}
+            >
+                Alla / Inga
+            </div>
+            <br />
             {sourceTypes.map((sourceType, index) => sourceType && (
                 <div key={index} className={querys.sourceTypes.includes(sourceType)
                     ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
@@ -155,7 +197,14 @@ const FilterPanel = () => {
                 </div>
             ))}
 
-            <br />Plattform:  <div className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1'> Alla </div><br />
+            <br />Plattform:
+            <div
+                className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1 mx-2'
+                onClick={() => { handleToggleALL("mainSources", mainSources) }}
+            >
+                Alla / Inga
+            </div>
+            <br />
             {mainSources.map((mainSource, index) => mainSource && (
                 <div key={index} className={querys.mainSources.includes(mainSource)
                     ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
@@ -165,7 +214,14 @@ const FilterPanel = () => {
                 </div>
             ))}
 
-            <br />Avdelning/Sektion:  <div className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1'> Alla </div><br />
+            <br />Avdelning/Sektion:
+            <div
+                className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1 mx-2'
+                onClick={() => { handleToggleALL("subSources", subSources) }}
+            >
+                Alla / Inga
+            </div>
+            <br />
             {subSources.map((subSource, index) => subSource && (
                 <div key={index}
                     className={querys.subSources.includes(subSource)
