@@ -37,7 +37,7 @@ const TryThings = () => {
 
 
 
-    const [filteredFeedBySource, setFilteredFeedBySource] = useState([])
+    const [filteredFeedBySource, setFilteredFeedBySource] = useState(null)
     useEffect(() => {
 
 
@@ -68,7 +68,7 @@ const TryThings = () => {
 
         // setFilteredFeedBySource([groupedNewsByTimeSpans[2]])
 
-    }, [querys])
+    }, [querys, masterNewsFeed])
 
 
     // detta objektet kan vi leka med för att se hur de serut på sidan:
@@ -97,7 +97,11 @@ const TryThings = () => {
                 </div>
                 <div className='col-7 ' style={{ maxHeight: "90svh", overflowY: "auto", overflowX: "hidden" }}>
                     här blir filtrerat per källa:
+
+
                     <GroupedFeed groupedNewsArray={filteredFeedBySource} />
+
+
                 </div>
             </div>
             <br />
