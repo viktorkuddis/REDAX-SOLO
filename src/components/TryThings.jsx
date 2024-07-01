@@ -92,13 +92,11 @@ const TryThings = () => {
     return (<>
         <div className='container-fluid'>
             <div className='row'>
-                <div className='col'>
+                <div className='col-5'>
                     <FilterPanel />
                 </div>
                 <div className='col-7 ' style={{ maxHeight: "90svh", overflowY: "auto", overflowX: "hidden" }}>
                     här blir filtrerat per källa:
-
-
                     <GroupedFeed groupedNewsArray={filteredFeedBySource} />
 
 
