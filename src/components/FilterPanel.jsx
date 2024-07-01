@@ -11,6 +11,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import SplitButton from 'react-bootstrap/SplitButton';
+import FilterButtonBySource from './FilterButtonBySource';
 
 const FilterPanel = () => {
 
@@ -248,13 +249,16 @@ const FilterPanel = () => {
             {sourceTypesToRender.length ? "(källtyper att rendera finns)" : "(inga källtyper att rendera finns så då visas alla)"}
             <br />
             {sourceTypesToRender.length
-                ? sourceTypesToRender.map((sourceType, index) => sourceType && (
-                    <div key={index} className={querys.sourceTypes.includes(sourceType)
+                ? sourceTypesToRender.map((item, index) => item && (<>
+                    <FilterButtonBySource key={index} queryKey={sourceTypes} queryKeyItem={item} />
+
+                    {/* <div key={index + index} className={querys.sourceTypes.includes(item)
                         ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
                         : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
-                        onClick={() => { handleToggleQueryItem("sourceTypes", sourceType) }}>
-                        {sourceType}
-                    </div>
+                        onClick={() => { handleToggleQueryItem("sourceTypes", item) }}>
+                        {item} DET FUNKA
+                    </div> */}
+                </>
                 ))
                 : sourceTypes.map((sourceType, index) => sourceType && (
                     <div key={index} className={querys.sourceTypes.includes(sourceType)
@@ -297,14 +301,17 @@ const FilterPanel = () => {
             {mainSourcesToRender.length ? "(huvudkällor att rendera finns)" : "(inga huvudkällor att rendera finns så då visas alla)"}
             <br />
 
+
             {mainSourcesToRender.length
-                ? mainSourcesToRender.map((mainSource, index) => mainSource && (
-                    <div key={index} className={querys.mainSources.includes(mainSource)
-                        ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
-                        : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
-                        onClick={() => { handleToggleQueryItem("mainSources", mainSource) }}>
-                        {mainSource}
-                    </div>
+                ? mainSourcesToRender.map((item, index) => item && (
+                    <FilterButtonBySource key={index} queryKey={mainSources} queryKeyItem={item} />
+
+                    // <div key={index} className={querys.mainSources.includes(mainSource)
+                    //     ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
+                    //     : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
+                    //     onClick={() => { handleToggleQueryItem("mainSources", mainSource) }}>
+                    //     {mainSource}
+                    // </div>
                 ))
                 : mainSources.map((mainSource, index) => mainSource && (
                     <div key={index} className={querys.mainSources.includes(mainSource)
@@ -338,13 +345,16 @@ const FilterPanel = () => {
             <br />
 
             {subSourcesToRender.length
-                ? subSourcesToRender.map((subSource, index) => subSource && (
-                    <div key={index} className={querys.subSources.includes(subSource)
-                        ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
-                        : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
-                        onClick={() => { handleToggleQueryItem("subSources", subSource) }}>
-                        {subSource}
-                    </div>
+                ? subSourcesToRender.map((item, index) => item && (
+
+                    <FilterButtonBySource key={index} queryKey={subSources} queryKeyItem={item} />
+
+                    // <div key={index} className={querys.subSources.includes(subSource)
+                    //     ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
+                    //     : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
+                    //     onClick={() => { handleToggleQueryItem("subSources", subSource) }}>
+                    //     {subSource}
+                    // </div>
                 ))
                 : subSources.map((subSource, index) => subSource && (
                     <div key={index} className={querys.subSources.includes(subSource)
