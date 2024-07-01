@@ -1,11 +1,12 @@
 // funktion som returnerar ett objekt enligt den mall som behövs.
-export function formatGlobalNewsObject(title, id, mainSource, subSource, coverage, image, media, summary, content, published, updated, link) {
+export function formatGlobalNewsObject(title, id, mainSource, subSource, coverage, sourceType, image, media, summary, content, published, updated, link) {
     const formattedObject = {
         title: title || "",
         id: id || "",
         mainSource: mainSource || "",
         subSource: subSource || "",
         coverage: coverage || "",
+        sourceType: sourceType || "",
         image: image || "",
         media: media || "",
         summary: summary || "",

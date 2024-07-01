@@ -25,6 +25,7 @@ export async function getSrNews() {
                         "Sveriges Radio",
                         mergedObjekt.channelName,
                         mergedObjekt.coverage,
+                        "Public Service",
                         mergedObjekt.image,
                         mergedObjekt.media,
                         mergedObjekt.summary,
@@ -114,7 +115,7 @@ export async function getSrNews() {
                 });
 
                 // console.log(completedArray)
-                // setAllSrNews(completedArray)
+                // setMasterNewsFeed(completedArray)
             }).catch((err) => { console.log(err) })
     })
 
