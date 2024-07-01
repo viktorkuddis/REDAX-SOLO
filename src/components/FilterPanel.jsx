@@ -94,19 +94,19 @@ const FilterPanel = () => {
     }, [masterNewsFeed]);
 
     // endast Konsol Loggar:
-    useEffect(() => {
-        if (subSources.length) {
-            console.log("mainSources", mainSources)
-            console.log("subSources", subSources)
-            console.log("sourceTypes", sourceTypes)
-            console.log("coverages", coverages)
-            console.log("-----------------------------------");
-            console.log("📖 sourceRegister", sourceRegister);
-            console.log("-----------------------------------");
-        }
+    // useEffect(() => {
+    //     if (subSources.length) {
+    //         console.log("mainSources", mainSources)
+    //         console.log("subSources", subSources)
+    //         console.log("sourceTypes", sourceTypes)
+    //         console.log("coverages", coverages)
+    //         console.log("-----------------------------------");
+    //         console.log("📖 sourceRegister", sourceRegister);
+    //         console.log("-----------------------------------");
+    //     }
 
 
-    }, [sourceRegister])
+    // }, [sourceRegister])
 
     function handleToggleQueryItem(queryKey, queryValueToToggle) {
 
@@ -238,28 +238,29 @@ const FilterPanel = () => {
 
         <div className="card d-block">
 
+
+
+
             <h4>FILTRERA EFTER KÄLLA:</h4>
 
-            <br />Täckning:
+            Täckning:
             <span>
                 <div
                     className='btn btn-outline-secondary btn-sm rounded-3  ms-1 my-1'
                     onClick={() => { handleToggleALL("coverages", coverages) }}
                 >
-                    Alla
+                    Markera
                 </div>
 
                 <div
                     className='btn btn-outline-secondary btn-sm rounded-3  ms-1 my-1'
                     onClick={() => { handleToggleNONE("coverages", coverages) }}
                 >
-                    Inga
+                    Avmarkera
                 </div>
             </span>
+            <br />
 
-            <br />
-            {coveragesToRender.length ? "(coverages att rendera finns)" : "(inga coverages att rendera finns så då visas alla)"}
-            <br />
 
             {coveragesToRender.length
                 ? coveragesToRender.map((item, index) => item && (
@@ -274,6 +275,7 @@ const FilterPanel = () => {
                 : coverages.map((item) => item && (
                     <FilterButtonBySource
                         key={item}
+                        markedAsDefault
                         queryKey={"coverages"}
                         queryKeyItem={item}
                         handleToggleQueryItem={handleToggleQueryItem}
@@ -284,7 +286,7 @@ const FilterPanel = () => {
             }
 
 
-            <br /><br />
+            <br />
 
 
 
@@ -294,20 +296,18 @@ const FilterPanel = () => {
                     className='btn btn-outline-secondary btn-sm rounded-3  ms-1 my-1'
                     onClick={() => { handleToggleALL("sourceTypes", sourceTypes) }}
                 >
-                    Alla
+                    Markera
                 </div>
 
                 <div
                     className='btn btn-outline-secondary btn-sm rounded-3  ms-1 my-1'
                     onClick={() => { handleToggleNONE("sourceTypes", sourceTypes) }}
                 >
-                    Inga
+                    Avmarkera
                 </div>
             </span>
+            <br />
 
-            <br />
-            {sourceTypes.length ? "(sourceTypes att rendera finns)" : "(inga sourceTypes att rendera finns så då visas alla)"}
-            <br />
 
             {sourceTypesToRender.length
                 ? sourceTypesToRender.map((item, index) => item && (
@@ -321,7 +321,7 @@ const FilterPanel = () => {
                 ))
                 : sourceTypes.map((item) => item && (
                     <FilterButtonBySource
-
+                        markedAsDefault
                         key={item}
                         queryKey={"sourceTypes"}
                         queryKeyItem={item}
@@ -332,7 +332,7 @@ const FilterPanel = () => {
                 ))
             }
 
-            <br /><br />
+            <br />
 
             <br />Plattform:
             <span>
@@ -340,20 +340,18 @@ const FilterPanel = () => {
                     className='btn btn-outline-secondary btn-sm rounded-3  ms-1 my-1'
                     onClick={() => { handleToggleALL("mainSources", mainSources) }}
                 >
-                    Alla
+                    Markera
                 </div>
 
                 <div
                     className='btn btn-outline-secondary btn-sm rounded-3  ms-1 my-1'
                     onClick={() => { handleToggleNONE("mainSources", mainSources) }}
                 >
-                    Inga
+                    Avmarkera
                 </div>
             </span>
+            <br />
 
-            <br />
-            {mainSources.length ? "(mainSources att rendera finns)" : "(inga mainSources att rendera finns så då visas alla)"}
-            <br />
 
             {mainSourcesToRender.length
                 ? mainSourcesToRender.map((item, index) => item && (
@@ -368,6 +366,7 @@ const FilterPanel = () => {
                 : mainSources.map((item) => item && (
                     <FilterButtonBySource
                         key={item}
+                        markedAsDefault
                         queryKey={"mainSources"}
                         queryKeyItem={item}
                         handleToggleQueryItem={handleToggleQueryItem}
@@ -379,28 +378,26 @@ const FilterPanel = () => {
 
 
 
-            <br /><br />
+            <br />
             <br />Avdelning/Sektion:
             <span>
                 <div
                     className='btn btn-outline-secondary btn-sm rounded-3  ms-1 my-1'
                     onClick={() => { handleToggleALL("subSources", subSources) }}
                 >
-                    Alla
+                    Markera
                 </div>
 
                 <div
                     className='btn btn-outline-secondary btn-sm rounded-3  ms-1 my-1'
                     onClick={() => { handleToggleNONE("subSources", subSources) }}
                 >
-                    Inga
+                    Avmarkera
                 </div>
             </span>
+            <br />
 
 
-            <br />
-            {subSources.length ? "(subSources att rendera finns)" : "(inga subSources att rendera finns så då visas alla)"}
-            <br />
 
             {subSourcesToRender.length
                 ? subSourcesToRender.map((item, index) => item && (
@@ -415,6 +412,7 @@ const FilterPanel = () => {
                 : subSources.map((item) => item && (
                     <FilterButtonBySource
                         key={item}
+                        markedAsDefault
                         queryKey={"subSources"}
                         queryKeyItem={item}
                         handleToggleQueryItem={handleToggleQueryItem}

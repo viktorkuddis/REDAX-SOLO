@@ -17,11 +17,12 @@ import { sortArticlesByCustomTimespans } from './utils/filteringUtils';
 const TryThings = () => {
 
     //masterNewsFeed, setMasterNewsFeed
-    const { masterNewsFeed, setMasterNewsFeed, getAllSrNewsArticles } = useContext(GlobalContext)
+    const { masterNewsFeed, setMasterNewsFeed, getAllSrNewsArticles, querys } = useContext(GlobalContext)
 
 
     //Vi hämtar HELA feedet från apier, placera dom alla i context, sorterar det efter timespanns, och assignar sorterade i en variabel:
     const [groupedNewsByTimeSpans, setGroupedNewsByTimeSpans] = useState(null);
+
     useEffect(() => {
         (async () => {
             const combinedNewsFeed = await getCombinedNewsFeed()
@@ -36,6 +37,38 @@ const TryThings = () => {
 
 
 
+    const [filteredFeedBySource, setFilteredFeedBySource] = useState([])
+    useEffect(() => {
+
+
+        let updatedArray = [];
+        console.log(updatedArray)
+
+        updatedArray = masterNewsFeed.filter((article) => {
+            // Kontrollera hierarki av matchningar
+            return (
+                // Kontrollera coverage (lägsta nivån i hierarkin)
+                (querys.coverages.length === 0 || querys.coverages.includes(article.coverage)) &&
+                // Kontrollera sourceType (nästa nivå i hierarkin)
+                (querys.sourceTypes.length === 0 || querys.sourceTypes.includes(article.sourceType)) &&
+                // Kontrollera mainSource (nästa nivå i hierarkin)
+                (querys.mainSources.length === 0 || querys.mainSources.includes(article.mainSource)) &&
+                // Kontrollera subSource (högsta nivån i hierarkin)
+                (querys.subSources.length === 0 || querys.subSources.includes(article.subSource))
+            );
+        });
+        console.log(updatedArray)
+
+        updatedArray = sortArticlesByCustomTimespans(updatedArray, "published")
+        console.log(updatedArray)
+
+        setFilteredFeedBySource(updatedArray)
+        // console.log("querys", querys)
+
+
+        // setFilteredFeedBySource([groupedNewsByTimeSpans[2]])
+
+    }, [querys])
 
 
     // detta objektet kan vi leka med för att se hur de serut på sidan:
@@ -58,6 +91,15 @@ const TryThings = () => {
 
     return (<>
         <div className='container-fluid'>
+            <div className='row'>
+                <div className='col'>
+                    <FilterPanel />
+                </div>
+                <div className='col-7 ' style={{ maxHeight: "90svh", overflowY: "auto", overflowX: "hidden" }}>
+                    här blir filtrerat per källa:
+                    <GroupedFeed groupedNewsArray={filteredFeedBySource} />
+                </div>
+            </div>
             <br />
             <FilterPanel />
             <br />
