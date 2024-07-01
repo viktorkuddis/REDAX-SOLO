@@ -152,6 +152,62 @@ const FilterPanel = () => {
         console.log("🧠 QUERYS  :", querys);
     }
 
+    const [coveragesToRender, setCoveragesToRender] = useState([]);
+    const [sourceTypesToRender, setSourceTypesToRender] = useState([]);
+    const [mainSourcesToRender, setMainSourcesToRender] = useState([]);
+    const [subSourcesToRender, setSubSourcesToRender] = useState([]);
+
+    // Definerar arrayer med de knappar som dynamisk ska renderas för användaren baserat på filtrering användaren gör:
+    useEffect(() => {
+
+        const tempCoveragesToRender = [];
+        const tempSourceTypesToRender = [];
+        const tempMainSourcesToRender = [];
+        const tempSubSourcesToRender = [];
+
+        // *** LOGIKFÖRKLARING *** //
+
+        // Går igenom alla värden i den aktuella Query-keyn.
+        // Kollar om någon rad i registret motsvarande key som matchar den aktuella query-värdet.
+        // Om match och den inte redan finns i motsvarande temporär array så skickas den in där.
+
+        querys.coverages.forEach((queryItem) => {
+            sourceRegister.some((registerItem) => {
+                if (registerItem.coverage == queryItem) {
+                    if (!tempSourceTypesToRender.includes(registerItem.sourceType)) tempSourceTypesToRender.push(registerItem.sourceType)
+                }
+            })
+        })
+        querys.sourceTypes.forEach((queryItem) => {
+            sourceRegister.some((registerItem) => {
+                if (registerItem.sourceType == queryItem) {
+                    if (!tempMainSourcesToRender.includes(registerItem.mainSource)) tempMainSourcesToRender.push(registerItem.mainSource)
+                }
+            })
+        })
+        querys.mainSources.forEach((queryItem) => {
+            sourceRegister.some((registerItem) => {
+                if (registerItem.mainSource == queryItem) {
+                    if (!tempSubSourcesToRender.includes(registerItem.subSource)) tempSubSourcesToRender.push(registerItem.subSource)
+                }
+            })
+        })
+
+        // Uppdaterar state med de nya arrayerna
+        setSourceTypesToRender(tempSourceTypesToRender);
+        setMainSourcesToRender(tempMainSourcesToRender);
+        setSubSourcesToRender(tempSubSourcesToRender);
+
+        // console.log("coveragesToRender:", coveragesToRender)
+        // console.log("sourceTypesToRender", sourceTypesToRender)
+        // console.log("mainSourcesToRender", mainSourcesToRender)
+        // console.log("subSourcesToRender", subSourcesToRender)
+
+    }, [querys])
+
+
+
+
 
 
 
@@ -165,7 +221,7 @@ const FilterPanel = () => {
             <br />Täckning:
             <div
                 className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1 mx-2'
-                onClick={() => { handleToggleALL("sourceTypes", sourceTypes) }}
+                onClick={() => { handleToggleALL("coverages", coverages) }}
             >
                 Alla / Inga
             </div>
@@ -180,13 +236,44 @@ const FilterPanel = () => {
 
             ))}
 
-            <br />Typ:
+
+            <br /><br />Typ:
             <div
                 className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1 mx-2'
                 onClick={() => { handleToggleALL("sourceTypes", sourceTypes) }}
             >
                 Alla / Inga
             </div>
+            <br />
+            {sourceTypesToRender.length ? "(källtyper att rendera finns)" : "(inga källtyper att rendera finns så då visas alla)"}
+            <br />
+            {sourceTypesToRender.length
+                ? sourceTypesToRender.map((sourceType, index) => sourceType && (
+                    <div key={index} className={querys.sourceTypes.includes(sourceType)
+                        ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
+                        : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
+                        onClick={() => { handleToggleQueryItem("sourceTypes", sourceType) }}>
+                        {sourceType}
+                    </div>
+                ))
+                : sourceTypes.map((sourceType, index) => sourceType && (
+                    <div key={index} className={querys.sourceTypes.includes(sourceType)
+                        ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
+                        : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
+                        onClick={() => { handleToggleQueryItem("sourceTypes", sourceType) }}>
+                        {sourceType}
+                    </div>))}
+
+
+            {/* {sourceTypes.map((sourceType, index) => sourceType && (
+                <div key={index} className={querys.sourceTypes.includes(sourceType)
+                    ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
+                    : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
+                    onClick={() => { handleToggleQueryItem("sourceTypes", sourceType) }}>
+                    {sourceType}
+                </div>
+            ))} */}
+            {/* <br />
             <br />
             {sourceTypes.map((sourceType, index) => sourceType && (
                 <div key={index} className={querys.sourceTypes.includes(sourceType)
@@ -195,8 +282,8 @@ const FilterPanel = () => {
                     onClick={() => { handleToggleQueryItem("sourceTypes", sourceType) }}>
                     {sourceType}
                 </div>
-            ))}
-
+            ))} */}
+            <br />
             <br />Plattform:
             <div
                 className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1 mx-2'
@@ -205,16 +292,40 @@ const FilterPanel = () => {
                 Alla / Inga
             </div>
             <br />
-            {mainSources.map((mainSource, index) => mainSource && (
+
+
+            {mainSourcesToRender.length ? "(huvudkällor att rendera finns)" : "(inga huvudkällor att rendera finns så då visas alla)"}
+            <br />
+
+            {mainSourcesToRender.length
+                ? mainSourcesToRender.map((mainSource, index) => mainSource && (
+                    <div key={index} className={querys.mainSources.includes(mainSource)
+                        ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
+                        : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
+                        onClick={() => { handleToggleQueryItem("mainSources", mainSource) }}>
+                        {mainSource}
+                    </div>
+                ))
+                : mainSources.map((mainSource, index) => mainSource && (
+                    <div key={index} className={querys.mainSources.includes(mainSource)
+                        ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
+                        : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
+                        onClick={() => { handleToggleQueryItem("mainSources", mainSource) }}>
+                        {mainSource}
+                    </div>))}
+
+
+            {/* {mainSources.map((mainSource, index) => mainSource && (
                 <div key={index} className={querys.mainSources.includes(mainSource)
                     ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
                     : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
                     onClick={() => { handleToggleQueryItem("mainSources", mainSource) }}>
                     {mainSource}
                 </div>
-            ))}
+            ))} */}
 
-            <br />Avdelning/Sektion:
+
+            <br /><br />Avdelning/Sektion:
             <div
                 className='btn btn-outline-secondary btn-sm rounded-3  me-1 my-1 mx-2'
                 onClick={() => { handleToggleALL("subSources", subSources) }}
@@ -222,7 +333,30 @@ const FilterPanel = () => {
                 Alla / Inga
             </div>
             <br />
-            {subSources.map((subSource, index) => subSource && (
+
+            {subSourcesToRender.length ? "(subKällor att rendera finns)" : "(inga subKällor att rendera finns så då visas alla)"}
+            <br />
+
+            {subSourcesToRender.length
+                ? subSourcesToRender.map((subSource, index) => subSource && (
+                    <div key={index} className={querys.subSources.includes(subSource)
+                        ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
+                        : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
+                        onClick={() => { handleToggleQueryItem("subSources", subSource) }}>
+                        {subSource}
+                    </div>
+                ))
+                : subSources.map((subSource, index) => subSource && (
+                    <div key={index} className={querys.subSources.includes(subSource)
+                        ? 'btn btn-primary btn-sm rounded-pill me-1 my-1'
+                        : 'btn btn-outline-secondary btn-sm rounded-pill  me-1 my-1'}
+                        onClick={() => { handleToggleQueryItem("subSources", subSource) }}>
+                        {subSource}
+                    </div>))}
+
+
+            <br />
+            {/* {subSources.map((subSource, index) => subSource && (
                 <div key={index}
                     className={querys.subSources.includes(subSource)
                         ? 'btn btn-primary btn-sm rounded-pill  me-1 my-1'
@@ -230,7 +364,7 @@ const FilterPanel = () => {
                     onClick={() => { handleToggleQueryItem("subSources", subSource) }}>
                     {subSource}
                 </div>
-            ))}
+            ))} */}
 
         </div >
         also TODO:

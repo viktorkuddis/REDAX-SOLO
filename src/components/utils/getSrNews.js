@@ -25,6 +25,7 @@ export async function getSrNews() {
                         "Sveriges Radio",
                         mergedObjekt.channelName,
                         mergedObjekt.coverage,
+                        "Public Service",
                         mergedObjekt.image,
                         mergedObjekt.media,
                         mergedObjekt.summary,
