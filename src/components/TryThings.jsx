@@ -82,7 +82,7 @@ const TryThings = () => {
 
     // console.log(masterNewsFeed);
 
-    //skapa array baserat på timmar sedan den publicerades:
+    //skapa array baserat på timmar sedan den publicerades:c
 
     const groupedNewsByTimes = sortArticlesByCustomTimespans(masterNewsFeed, "published")
     // console.log(groupedNewsByTimes)
