@@ -20,7 +20,7 @@ const DarkModeBtn = () => {
 
     return (<>
 
-        <button className='btn btn-primary'
+        <button className='btn btn-outline-secondary btn-sm'
             onClick={handleDarkmode}>
             <i className="bi bi-circle-half"></i>
         </button>

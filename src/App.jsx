@@ -56,9 +56,9 @@ function App() {
 
         <Route path="/" element={<Layout />}>
           <Route index element={<FirstPage />} />
-          <Route path="/Feed" element={<NewsFeedPage />} />
-          <Route path="/Storys" element={<MyStoriesPage />} />
-          <Route path="/Planering" element={<PlanningPage />} />
+          <Route path="/feed" element={<NewsFeedPage />} />
+          <Route path="/storys/" element={<MyStoriesPage />} />
+          <Route path="/planering" element={<PlanningPage />} />
           <Route path="*" element={<MissingPage />} />
         </Route>
 
