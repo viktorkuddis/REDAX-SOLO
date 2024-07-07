@@ -16,6 +16,15 @@ import CardSizeBtn from './components/CardSizeBtn'
 import TryThings from './components/TryThings';
 import LoadingScreen from './components/LoadingScreen';
 
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import FirstPage from './pages/FirstPage'
+import NewsFeedPage from './pages/NewsFeedPage'
+import MyStoriesPage from './pages/MyStoriesPage'
+import PlanningPage from './pages/PlanningPage'
+import MissingPage from './pages/MissingPage'
+import Layout from './layout/Layout'
+
 function App() {
 
 
@@ -42,32 +51,46 @@ function App() {
 
   return (
 
+    <BrowserRouter>
+      <Routes>
+
+        <Route path="/" element={<Layout />}>
+          <Route index element={<FirstPage />} />
+          <Route path="/Feed" element={<NewsFeedPage />} />
+          <Route path="/Storys" element={<MyStoriesPage />} />
+          <Route path="/Planering" element={<PlanningPage />} />
+          <Route path="*" element={<MissingPage />} />
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
+
     // Allt är i classname card för att den ska ärva stil stom kommer med bootstraps tema. Annars ärver inte en div eller container någon stil.
     // Denna div agerar body
     // Denna div agerar body
     // Denna div agerar body
     //d-block för att ta bort flexen ett cad kommer med naturligt.
-    <div className='card rounded-0 border-0 d-block'
-      data-bs-theme={isDarkMode ? "dark" : "light"}
-      style={{
-        height: "100svh", width: "100vw", overflow: "auto"
-      }}>
-      {/* Vanlig div som wrapper här för att bli av med flexen card kommer i */}
+    // <div className='card rounded-0 border-0 d-block'
+    //   data-bs-theme={isDarkMode ? "dark" : "light"}
+    //   style={{
+    //     height: "100svh", width: "100vw", overflow: "auto"
+    //   }}>
+    //   {/* Vanlig div som wrapper här för att bli av med flexen card kommer i */}
 
 
-      {isLoading && <LoadingScreen />}
+    //   {isLoading && <LoadingScreen />}
 
-      <DarkModeBtn /> <CardSizeBtn />
-
-
-      <div className=''>
-        <TryThings />
-      </div>
+    //   <DarkModeBtn /> <CardSizeBtn />
 
 
+    //   <div className=''>
+    //     <TryThings />
+    //   </div>
 
 
-    </div >
+
+
+    // </div >
 
 
   )
