@@ -62,15 +62,15 @@ const Header = ({ isDarkMode }) => {
                                 {/* Nav.Link är en navigationslänk */}
 
                                 <Nav.Link as={NavLink} to="/feed" >
-                                    <i className="bi bi-card-heading"> </i><small>  Nyhetsfeed</small>
+                                    <i className="bi bi-card-heading"> </i>  Nyhetsfeed
                                 </Nav.Link>
 
                                 <Nav.Link as={NavLink} to="/storys" >
-                                    <i className="bi bi-folder"></i><small>  Mina Storys</small>
+                                    <i className="bi bi-folder"></i>  Mina Storys
                                 </Nav.Link>
 
                                 <Nav.Link as={NavLink} to="/planering" >
-                                    <i className="bi bi-file-ruled"></i><small>  Planering</small>
+                                    <i className="bi bi-file-ruled"></i>  Planering
                                 </Nav.Link>
 
 
