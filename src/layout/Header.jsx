@@ -24,11 +24,11 @@ const Header = ({ isDarkMode }) => {
     return (
         <>
             {/* Navbar-komponenten från React Bootstrap. Använder expand-attributet för att hantera kollaps/expansion */}
-            <Navbar expand={expand} className="bg-body-secondary mb-3 p-0" style={{ maxWidth: "100vw" }}>
+            <Navbar expand={expand} className="bg-body-secondary mb-3 p-0 pt-2" style={{ maxWidth: "100vw" }}>
                 <Container fluid>
                     {/* Navbar.Brand är platsen för ditt varumärke eller företagsnamn */}
                     <Navbar.Brand as={NavLink} to="/"><small>REDAX SOLO</small></Navbar.Brand>
-                    <DarkModeBtn className="ms-auto" />
+                    <DarkModeBtn />
                     {/* Navbar.Toggle är knappen som visas när navbaren är kollapsad och används för att öppna offcanvas */}
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`}
                         style={{
