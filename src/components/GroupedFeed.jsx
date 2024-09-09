@@ -22,15 +22,35 @@ const GroupedFeed = ({ groupedNewsArray }) => {
     return (<>
         {/* de aktiva här är de positioner i arrayen som alltid kommer vara öppna när man startar. */}
 
+        {/* HÄR ÄR SPINNERN */}
+        {/* <h1 style={{ marginTop: "auto" }}>REDAX SOLO</h1>
+            <div className="spinner-border" role="status" />
+            <span className="visually-hidden">Loading...</span>
+            <p style={{ marginTop: "auto" }} className='mb-5'>By Viktor Magnusson</p> */}
+
+        {!groupedNewsArray && <div>
+
+            <div className="d-flex justify-content-center">
+                <div className='p-5'>
+                    <div className="spinner-border" role="status"></div>
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+        </div>}
+
+
+
+
         <Accordion flush defaultActiveKey={[0, 1, 2]} alwaysOpen
             // Stylen gör listan 100/ av sin förälderelement. Fyller ut det den tillåter att fylla ut.
-            style={{ height: "100%" }} >
+            style={{ height: "100%" }}>
 
             {/* om det finns en array med grupperade nyheter definerad så kommer den försöka visas. annars inte. */}
             {groupedNewsArray &&
                 groupedNewsArray.map((group, index) => {
                     return (
-                        <Accordion.Item key={group.label} eventKey={index} >
+                        <Accordion.Item key={group.label} eventKey={index}>
 
                             <Accordion.Header>
                                 <p className='m-0 m-0'><b>{group.label}</b> <small>({group.articles.length})</small></p>

@@ -91,18 +91,21 @@ const NewsFeedPage = () => {
     return (<>
         <div className='container-fluid' style={{ height: "100%" }} >
             {/* <FilterPanel /> */}
-            <div className='row' style={{ height: "100%" }}>
+
+            <div className='row pb-2' style={{ height: "100%" }}>
+
                 <div className='col-6' style={{ height: "100%" }}>
 
-                    <div className='card' style={{
+
+                    <div className='card  ' style={{
                         height: "100%", overflowY: "auto", overflowX: "hidden"
                     }}>
-                        <h2>Senaste Nytt:</h2>
+
                         <GroupedFeed groupedNewsArray={groupedNewsByTimeSpans} />
 
                     </div>
                 </div>
-                <div className='col-6'>
+                <div className='col-6' style={{ height: "100%" }}>
                     <MainNewsDisplay />
                 </div>
             </div>

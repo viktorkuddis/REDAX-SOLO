@@ -37,7 +37,7 @@ const Layout = () => {
         <>
 
 
-
+            {isLoading && <LoadingScreen />}
 
 
             {/*
@@ -57,7 +57,7 @@ const Layout = () => {
                     <Header isDarkMode={isDarkMode} />
 
                     {/* height sätts här bara för att få in en bestämd storlek */}
-                    <div className='flex-grow-1 bg-warning' style={{ height: "80vh" }} >
+                    <div className='flex-grow-1 ' style={{ height: "80vh" }} >
                         <Outlet />
                     </div>
 

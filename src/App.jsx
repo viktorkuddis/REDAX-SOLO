@@ -69,7 +69,7 @@ function App() {
     // Denna div agerar body
     // Denna div agerar body
     // Denna div agerar body
-    //d-block för att ta bort flexen ett cad kommer med naturligt.
+    // d-block för att ta bort flexen ett cad kommer med naturligt.
     // <div className='card rounded-0 border-0 d-block'
     //   data-bs-theme={isDarkMode ? "dark" : "light"}
     //   style={{
