@@ -56,8 +56,8 @@ const Layout = () => {
                 <div className='d-flex flex-column' style={{ minHeight: "100svh" }}>
                     <Header isDarkMode={isDarkMode} />
 
-
-                    <div className='flex-grow-1'>
+                    {/* height sätts här bara för att få in en bestämd storlek */}
+                    <div className='flex-grow-1 bg-warning' style={{ height: "80vh" }} >
                         <Outlet />
                     </div>
 

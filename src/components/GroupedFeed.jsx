@@ -22,7 +22,9 @@ const GroupedFeed = ({ groupedNewsArray }) => {
     return (<>
         {/* de aktiva här är de positioner i arrayen som alltid kommer vara öppna när man startar. */}
 
-        <Accordion flush defaultActiveKey={[0, 1, 2]} alwaysOpen>
+        <Accordion flush defaultActiveKey={[0, 1, 2]} alwaysOpen
+            // Stylen gör listan 100/ av sin förälderelement. Fyller ut det den tillåter att fylla ut.
+            style={{ height: "100%" }} >
 
             {/* om det finns en array med grupperade nyheter definerad så kommer den försöka visas. annars inte. */}
             {groupedNewsArray &&

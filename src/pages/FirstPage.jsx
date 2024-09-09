@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const FirstPage = () => {
-    return (<>
+    return (<main>
         <div> <small>FirstPage</small></div>
         <br />
         <div className='text-center'>
@@ -26,7 +26,7 @@ const FirstPage = () => {
 
 
 
-    </>
+    </main>
 
     )
 }
