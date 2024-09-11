@@ -1,8 +1,12 @@
 import React from 'react'
 
+
+
 const MyStoriesPage = () => {
-    return (
+    return (<>
         <div>MyStoriesPage</div>
+
+    </>
     )
 }
 

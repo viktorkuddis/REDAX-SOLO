@@ -7,8 +7,13 @@ import FilterPanel from '../components/FilterPanel'
 import GroupedFeed from '../components/GroupedFeed'
 import MainNewsDisplay from '../components/MainNewsDisplay'
 
+
+
 import { getCombinedNewsFeed } from '../components/utils/getCombinedNewsFeed'
 import { sortArticlesByCustomTimespans } from '../components/utils/filteringUtils';
+
+
+
 
 
 const NewsFeedPage = () => {
@@ -101,8 +106,8 @@ const NewsFeedPage = () => {
                     <div className='card  shadow-sm' style={{
                         height: "100%", overflowY: "auto", overflowX: "hidden"
                     }}>
-
-                        <GroupedFeed groupedNewsArray={groupedNewsByTimeSpans} />
+                        {/* VI FILTRERAR NYHETER BY KÄLLLA. DET ÄR SÅ FILTRET KICKAR IN. */}
+                        <GroupedFeed groupedNewsArray={filteredFeedBySource} />
 
                     </div>
                 </div>
@@ -111,7 +116,10 @@ const NewsFeedPage = () => {
                 </div>
             </div>
         </div >
+
     </>
+
+
 
 
     )
