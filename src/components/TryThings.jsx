@@ -37,7 +37,7 @@ const TryThings = () => {
 
 
 
-    const [filteredFeedBySource, setFilteredFeedBySource] = useState([])
+    const [filteredFeedBySource, setFilteredFeedBySource] = useState(null)
     useEffect(() => {
 
 
@@ -68,7 +68,7 @@ const TryThings = () => {
 
         // setFilteredFeedBySource([groupedNewsByTimeSpans[2]])
 
-    }, [querys])
+    }, [querys, masterNewsFeed])
 
 
     // detta objektet kan vi leka med för att se hur de serut på sidan:
@@ -82,7 +82,7 @@ const TryThings = () => {
 
     // console.log(masterNewsFeed);
 
-    //skapa array baserat på timmar sedan den publicerades:
+    //skapa array baserat på timmar sedan den publicerades:c
 
     const groupedNewsByTimes = sortArticlesByCustomTimespans(masterNewsFeed, "published")
     // console.log(groupedNewsByTimes)
@@ -92,12 +92,14 @@ const TryThings = () => {
     return (<>
         <div className='container-fluid'>
             <div className='row'>
-                <div className='col'>
+                <div className='col-5'>
                     <FilterPanel />
                 </div>
                 <div className='col-7 ' style={{ maxHeight: "90svh", overflowY: "auto", overflowX: "hidden" }}>
                     här blir filtrerat per källa:
                     <GroupedFeed groupedNewsArray={filteredFeedBySource} />
+
+
                 </div>
             </div>
             <br />

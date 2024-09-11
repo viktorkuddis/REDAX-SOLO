@@ -195,30 +195,55 @@ const FilterPanel = () => {
 
         // Går igenom alla värden i den aktuella Query-keyn.
         // Kollar om någon rad i registret motsvarande key som matchar den aktuella query-värdet.
+        // Kollar så att även andra delar av resisteritemet finns i queryn.
         // Om match och den inte redan finns i motsvarande temporär array så skickas den in där.
+
+
+        // *** LOGIKFÖRKLARING *** //
+        // Går igenom alla värden i den aktuella Query-keyn.
+        // Kollar om något item i registret har motsvarande key som matchar den aktuella query-värdet.
+        // Kollar även så att registeritemets övriga keys bär värden som finns representerade i queryns motsvarande keys. (gäller endast de keys som är överordnade den aktuella keyn enligt filterflödet som är uppbuggt)
+        // Om en matchning hittas, och matchningen inte redan finns i den tillfälliga arrayen för rendering,
+        // läggs den till. 
+
+
+
 
         querys.coverages.forEach((queryItem) => {
             sourceRegister.some((registerItem) => {
-                if (registerItem.coverage == queryItem) {
+                if (
+                    registerItem.coverage == queryItem
+                ) {
                     if (!tempSourceTypesToRender.includes(registerItem.sourceType)) tempSourceTypesToRender.push(registerItem.sourceType)
                 }
             })
         })
+
+
         querys.sourceTypes.forEach((queryItem) => {
             sourceRegister.some((registerItem) => {
-                if (registerItem.sourceType == queryItem) {
+                if (
+                    registerItem.sourceType == queryItem
+                    && querys.coverages.includes(registerItem.coverage)
+                ) {
                     if (!tempMainSourcesToRender.includes(registerItem.mainSource)) tempMainSourcesToRender.push(registerItem.mainSource)
                 }
             })
         })
 
+
         querys.mainSources.forEach((queryItem) => {
             sourceRegister.some((registerItem) => {
-                if (registerItem.mainSource == queryItem) {
+                if (
+                    registerItem.mainSource == queryItem
+                    && querys.sourceTypes.includes(registerItem.sourceType)
+                    && querys.coverages.includes(registerItem.coverage)
+                ) {
                     if (!tempSubSourcesToRender.includes(registerItem.subSource)) tempSubSourcesToRender.push(registerItem.subSource)
                 }
             })
         })
+
 
 
         // Uppdaterar state med de nya arrayerna
@@ -236,12 +261,12 @@ const FilterPanel = () => {
 
     return (<>
 
-        <div className="card d-block">
+        <div className="d-block">
 
 
 
 
-            <h4>FILTRERA EFTER KÄLLA:</h4>
+
 
             Täckning:
             <span>
@@ -425,9 +450,10 @@ const FilterPanel = () => {
 
 
         </div >
-        also TODO:
+
+        {/* also TODO:
         <br />typ: <br />
-        Public Service, Kommersiell Nyhetsmedia, Viral / Klickvänligt, Nischmedia
+        Public Service, Kommersiell Nyhetsmedia, Viral / Klickvänligt, Nischmedia */}
 
 
 

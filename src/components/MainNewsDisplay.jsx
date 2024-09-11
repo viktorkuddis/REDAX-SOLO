@@ -19,7 +19,7 @@ const MainNewsDisplay = () => {
 
         {articleToDisplay
             ?
-            <div className='card p-2' style={{ maxHeight: "80vh", overflowY: "auto", overflowX: "hidden" }}>
+            <div className='card bg-body-tertiary shadow-sm p-2' style={{ maxHeight: "100%", overflowY: "auto", overflowX: "hidden" }}>
 
                 <div className='row'>
                     <div className="col">
