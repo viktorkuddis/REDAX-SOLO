@@ -52,12 +52,13 @@ const Layout = () => {
                     height: "100svh", width: "100vw", overflow: "auto"
                 }}>
                 {/* Vanlig div som wrapper här för att bli av med flexen card kommer i */}
+                {isLoading && <LoadingScreen />}
 
                 <div className='d-flex flex-column' style={{ minHeight: "100svh" }}>
                     <Header isDarkMode={isDarkMode} />
 
-
-                    <div className='flex-grow-1'>
+                    {/* height sätts här bara för att få in en bestämd storlek */}
+                    <div className='flex-grow-1 ' style={{ height: "80vh" }} >
                         <Outlet />
                     </div>
 
