@@ -92,12 +92,13 @@ const NewsFeedPage = () => {
         <div className='container-fluid' style={{ height: "100%" }} >
             {/* <FilterPanel /> */}
 
-            <div className='row pb-2' style={{ height: "100%" }}>
+
+            <div className='row pb-3' style={{ height: "100%" }}>
 
                 <div className='col-6' style={{ height: "100%" }}>
 
 
-                    <div className='card  ' style={{
+                    <div className='card  shadow-sm' style={{
                         height: "100%", overflowY: "auto", overflowX: "hidden"
                     }}>
 

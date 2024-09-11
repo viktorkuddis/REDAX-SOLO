@@ -20,13 +20,8 @@ const GroupedFeed = ({ groupedNewsArray }) => {
 
 
     return (<>
-        {/* de aktiva här är de positioner i arrayen som alltid kommer vara öppna när man startar. */}
 
-        {/* HÄR ÄR SPINNERN */}
-        {/* <h1 style={{ marginTop: "auto" }}>REDAX SOLO</h1>
-            <div className="spinner-border" role="status" />
-            <span className="visually-hidden">Loading...</span>
-            <p style={{ marginTop: "auto" }} className='mb-5'>By Viktor Magnusson</p> */}
+        {/* om det inte finns en array med grupperade nyheter så visas en laddningsspinner */}
 
         {!groupedNewsArray && <div>
 
@@ -41,7 +36,7 @@ const GroupedFeed = ({ groupedNewsArray }) => {
 
 
 
-
+        {/* de aktiva här är de positioner i arrayen som alltid kommer vara öppna när man startar. */}
         <Accordion flush defaultActiveKey={[0, 1, 2]} alwaysOpen
             // Stylen gör listan 100/ av sin förälderelement. Fyller ut det den tillåter att fylla ut.
             style={{ height: "100%" }}>

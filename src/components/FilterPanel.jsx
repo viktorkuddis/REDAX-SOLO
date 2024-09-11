@@ -261,7 +261,7 @@ const FilterPanel = () => {
 
     return (<>
 
-        <div className="card d-block">
+        <div className="d-block">
 
 
 

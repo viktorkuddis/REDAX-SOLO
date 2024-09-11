@@ -37,7 +37,7 @@ const Layout = () => {
         <>
 
 
-            {isLoading && <LoadingScreen />}
+
 
 
             {/*
@@ -52,6 +52,7 @@ const Layout = () => {
                     height: "100svh", width: "100vw", overflow: "auto"
                 }}>
                 {/* Vanlig div som wrapper här för att bli av med flexen card kommer i */}
+                {isLoading && <LoadingScreen />}
 
                 <div className='d-flex flex-column' style={{ minHeight: "100svh" }}>
                     <Header isDarkMode={isDarkMode} />

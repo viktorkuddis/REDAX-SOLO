@@ -13,9 +13,9 @@ export async function getCombinedNewsFeed() {
     // console.log("combined: ", combinedNewsFeed)
 
 
-    const PLACEHOLDERNewsFeed = getPLACEHOLDERNews();
+    // const PLACEHOLDERNewsFeed = getPLACEHOLDERNews();
     // console.log("PLACEHOLDERNEWS: ", PLACEHOLDERNewsFeed)
-    combinedNewsFeed.push(...PLACEHOLDERNewsFeed)
+    // combinedNewsFeed.push(...PLACEHOLDERNewsFeed)
     // console.log("combined: ", combinedNewsFeed)
 
 
