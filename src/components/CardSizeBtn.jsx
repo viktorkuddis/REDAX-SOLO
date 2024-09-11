@@ -23,7 +23,7 @@ const CardSizeBtn = () => {
 
     return (<>
 
-        <button className='btn btn-primary'
+        <button className='btn btn-primary btn-sm'
             onClick={handleCardSize}>
 
 

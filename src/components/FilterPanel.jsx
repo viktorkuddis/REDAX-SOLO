@@ -266,7 +266,7 @@ const FilterPanel = () => {
 
 
 
-            <h4>FILTRERA EFTER KÄLLA:</h4>
+
 
             Täckning:
             <span>
@@ -450,9 +450,10 @@ const FilterPanel = () => {
 
 
         </div >
-        also TODO:
+
+        {/* also TODO:
         <br />typ: <br />
-        Public Service, Kommersiell Nyhetsmedia, Viral / Klickvänligt, Nischmedia
+        Public Service, Kommersiell Nyhetsmedia, Viral / Klickvänligt, Nischmedia */}
 
 
 
